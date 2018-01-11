@@ -24,6 +24,13 @@ public class SeleniumLoginTest {
             "(about 20 internal and\n" +
             "some external projects),\n" +
             "wish to get more…";
+    private static final String MAIN_TITLE = "EPAM FRAMEWORK WISHES…";
+    private static final String MAIN_TEXT = "LOREM IPSUM DOLOR SIT AMET, " +
+            "CONSECTETUR ADIPISICING ELIT, SED DO EIUSMOD TEMPOR INCIDIDUNT UT LABORE ET DOLORE MAGNA " +
+            "ALIQUA. UT ENIM AD MINIM VENIAM, QUIS NOSTRUD EXERCITATION ULLAMCO LABORIS NISI UT ALIQUIP " +
+            "EX EA COMMODO CONSEQUAT DUIS AUTE IRURE DOLOR IN REPREHENDERIT IN VOLUPTATE VELIT ESSE " +
+            "CILLUM DOLORE EU FUGIAT NULLA PARIATUR.";
+
     private WebDriver driver;
 
     //1.Create a new test, specify test name in accordance with checking functionality
@@ -66,14 +73,22 @@ public class SeleniumLoginTest {
         //8. Assert that there are 4 texts on the Home Page and check them by getting texts
         List<WebElement> textBelowImg = driver.findElements(By.cssSelector(".benefit-txt"));
         Assert.assertEquals(textBelowImg.size(), 4);
+        for (WebElement txt : textBelowImg) {
+            Assert.assertTrue(txt.isDisplayed());
+        }
 
         Assert.assertEquals(PRACTICES, driver.findElement(By.xpath("//span[contains(@class,'practise')]/../../span")).getText());
         Assert.assertEquals(CUSTOM, driver.findElement(By.xpath("//span[contains(@class,'custom')]/../../span")).getText());
         Assert.assertEquals(MULTI, driver.findElement(By.xpath("//span[contains(@class,'multi')]/../../span")).getText());
         Assert.assertEquals(BASE, driver.findElement(By.xpath("//span[contains(@class,'base')]/../../span")).getText());
-        
-        //9. Assert that there are the main header and the text below it on the Home Page
 
+        //9. Assert that there are the main header and the text below it on the Home Page
+        WebElement actualMainTitle = driver.findElement(By.cssSelector(".main-txt"));
+        Assert.assertTrue(actualMainTitle.isDisplayed());
+        Assert.assertEquals(MAIN_TEXT, actualMainTitle.getText());
+        WebElement actualMainTxt = driver.findElement(By.cssSelector(".main-title"));
+        Assert.assertTrue(actualMainTxt.isDisplayed());
+        Assert.assertEquals(MAIN_TITLE,actualMainTxt .getText());
 
     }
 
