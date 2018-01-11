@@ -9,7 +9,7 @@ import org.testng.annotations.Test;
 import java.util.List;
 
 public class SeleniumLoginTest extends TestBase {
-    private static final String TITLE = "Index page";
+    private static final String TITLE = "Index Page";
     private static final String USERNAME = "Piter Chailovskii";
     private static final String PRACTICES = "To include good practices\n" +
             "and ideas from successful\n" +
@@ -20,8 +20,8 @@ public class SeleniumLoginTest extends TestBase {
     private static final String BASE = "Already have good base\n" +
             "(about 20 internal and\n" +
             "some external projects),\n" +
-            "wish to get more…";
-    private static final String MAIN_TITLE = "EPAM FRAMEWORK WISHES…";
+            "wish to get more\u2026";
+    private static final String MAIN_TITLE = "EPAM FRAMEWORK WISHES\u2026";
     private static final String MAIN_TEXT = "LOREM IPSUM DOLOR SIT AMET, " +
             "CONSECTETUR ADIPISICING ELIT, SED DO EIUSMOD TEMPOR INCIDIDUNT UT LABORE ET DOLORE MAGNA " +
             "ALIQUA. UT ENIM AD MINIM VENIAM, QUIS NOSTRUD EXERCITATION ULLAMCO LABORIS NISI UT ALIQUIP " +
@@ -33,9 +33,8 @@ public class SeleniumLoginTest extends TestBase {
     public void loginTest() {
         //2. Open test site by URL
         driver.navigate().to("https://jdi-framework.github.io/tests");
-        wait.until(ExpectedConditions.titleIs(TITLE));
         //3. Assert Browser title
-        Assert.assertTrue(TITLE.equalsIgnoreCase(driver.getTitle()));
+        wait.until(ExpectedConditions.titleIs(TITLE));
 
         //4. Perform login
         driver.findElement(By.cssSelector(".uui-profile-menu")).click();
@@ -48,7 +47,7 @@ public class SeleniumLoginTest extends TestBase {
         Assert.assertTrue(USERNAME.equalsIgnoreCase(profileInfo.getText()));
 
         //6. Assert Browser title
-        Assert.assertTrue(TITLE.equalsIgnoreCase(driver.getTitle()));
+        wait.until(ExpectedConditions.titleIs(TITLE));
 
         //7. Assert that there are 4 images on the Home Page and they are displayed
         List<WebElement> images = driver.findElements(By.cssSelector(".benefit-icon span"));
