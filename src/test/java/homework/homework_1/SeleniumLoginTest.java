@@ -5,10 +5,18 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 public class SeleniumLoginTest {
+    static final String PRACTICES = "To include good practices and ideas from successful EPAM projec";
+    static final String CUSTOM = "To be flexible and customizable ";
+    static final String MULTI = "To be multiplatform ";
+    static final String BASE = "Already have good base (about 20 internal and some external projects), wish to get more…";
+
     //1.Create a new test, specify test name in accordance with checking functionality
+    @BeforeMethod
+
     @Test
     public void loginTest() {
         WebDriver driver = new ChromeDriver();
@@ -25,7 +33,8 @@ public class SeleniumLoginTest {
         driver.findElement(By.cssSelector(".uui-button")).click();
 
         //5. Assert User name in the left-top side of screen that user is loggined
-        WebElement profileInfo = driver.findElement(By.cssSelector(".profile-photo"));
+        WebElement profileInfo = driver.findElement(By.cssSelector(".profile-photo span"));
+        Assert.assertTrue(profileInfo.isDisplayed());
         String name = profileInfo.getText();
         Assert.assertTrue("Piter Chailovskii".equalsIgnoreCase(name));
 
