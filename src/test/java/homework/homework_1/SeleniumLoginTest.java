@@ -5,24 +5,31 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 public class SeleniumLoginTest {
+    static final String TITLE = "Index page";
+    static final String USERNAME = "Piter Chailovskii";
     static final String PRACTICES = "To include good practices and ideas from successful EPAM projec";
     static final String CUSTOM = "To be flexible and customizable ";
     static final String MULTI = "To be multiplatform ";
     static final String BASE = "Already have good base (about 20 internal and some external projects), wish to get more…";
+    private WebDriver  driver;
 
     //1.Create a new test, specify test name in accordance with checking functionality
     @BeforeMethod
-
-    @Test
-    public void loginTest() {
-        WebDriver driver = new ChromeDriver();
+    public void preconditions(){
+        driver = new ChromeDriver();
         driver.manage().window().maximize();
         //2. Open test site by URL
         driver.navigate().to("https://jdi-framework.github.io/tests");
+    }
+
+    @Test
+    public void loginTest() {
+
         //3. Assert Browser title
         Assert.assertEquals(driver.getTitle(), "Index Page");
 
@@ -43,10 +50,15 @@ public class SeleniumLoginTest {
         //7. Assert that there are 4 images on the Home Page and they are displayed
         //8. Assert that there are 4 texts on the Home Page and check them by getting texts
         //9. Assert that there are the main header and the text below it on the Home Page
+
+
+    }
+
+    @AfterMethod
+    public void closeBrowser() {
         //10. Close Browser
         driver.close();
         driver.quit();
-
     }
 
 
