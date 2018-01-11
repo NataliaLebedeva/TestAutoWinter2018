@@ -28,7 +28,6 @@ public class SeleniumLoginTest extends TestBase {
             "EX EA COMMODO CONSEQUAT DUIS AUTE IRURE DOLOR IN REPREHENDERIT IN VOLUPTATE VELIT ESSE " +
             "CILLUM DOLORE EU FUGIAT NULLA PARIATUR.";
 
-    //1.Create a new test, specify test name in accordance with checking functionality
     @Test
     public void loginTest() {
         //2. Open test site by URL
@@ -60,15 +59,18 @@ public class SeleniumLoginTest extends TestBase {
         List<WebElement> textBelowImg = driver.findElements(By.cssSelector(".benefit-txt"));
         Assert.assertEquals(textBelowImg.size(), 4);
 
-        Assert.assertEquals(PRACTICES, driver.findElement(By.xpath("//span[contains(@class,'practise')]/../../span")).getText());
-        Assert.assertEquals(CUSTOM, driver.findElement(By.xpath("//span[contains(@class,'custom')]/../../span")).getText());
-        Assert.assertEquals(MULTI, driver.findElement(By.xpath("//span[contains(@class,'multi')]/../../span")).getText());
-        Assert.assertEquals(BASE, driver.findElement(By.xpath("//span[contains(@class,'base')]/../../span")).getText());
+        String commonLocator = "//span[contains(@class,'%s')]/../../span";
+        softAssert.assertEquals(PRACTICES,  driver.findElement(By.xpath(String.format(commonLocator,"practise"))).getText());
+        softAssert.assertEquals(CUSTOM,     driver.findElement(By.xpath(String.format(commonLocator,"custom"))).getText());
+        softAssert.assertEquals(MULTI,      driver.findElement(By.xpath(String.format(commonLocator,"multi"))).getText());
+        softAssert.assertEquals(BASE,       driver.findElement(By.xpath(String.format(commonLocator,"base"))).getText());
 
         //9. Assert that there are the main header and the text below it on the Home Page
         WebElement actualMainTitle = driver.findElement(By.cssSelector(".main-txt"));
         Assert.assertEquals(MAIN_TEXT, actualMainTitle.getText());
         WebElement actualMainTxt = driver.findElement(By.cssSelector(".main-title"));
         Assert.assertEquals(MAIN_TITLE,actualMainTxt .getText());
+
+        softAssert.assertAll();
     }
 }
