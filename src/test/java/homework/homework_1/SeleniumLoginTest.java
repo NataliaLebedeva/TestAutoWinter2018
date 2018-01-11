@@ -14,10 +14,16 @@ import java.util.List;
 public class SeleniumLoginTest {
     private static final String TITLE = "Index page";
     private static final String USERNAME = "Piter Chailovskii";
-    private static final String PRACTICES = "To include good practices and ideas from successful EPAM projec";
-    private static final String CUSTOM = "To be flexible and customizable ";
-    private static final String MULTI = "To be multiplatform ";
-    private static final String BASE = "Already have good base (about 20 internal and some external projects), wish to get more…";
+    private static final String PRACTICES = "To include good practices\n" +
+            "and ideas from successful\n" +
+            "EPAM projec";
+    private static final String CUSTOM = "To be flexible and\n" +
+            "customizable";
+    private static final String MULTI = "To be multiplatform";
+    private static final String BASE = "Already have good base\n" +
+            "(about 20 internal and\n" +
+            "some external projects),\n" +
+            "wish to get more…";
     private WebDriver driver;
 
     //1.Create a new test, specify test name in accordance with checking functionality
@@ -51,13 +57,21 @@ public class SeleniumLoginTest {
         Assert.assertTrue(TITLE.equalsIgnoreCase(driver.getTitle()));
 
         //7. Assert that there are 4 images on the Home Page and they are displayed
-        List<WebElement> pictures = driver.findElements(By.cssSelector(".benefit-icon span"));
-        Assert.assertEquals(pictures.size(), 4);
-        for (WebElement pics: pictures) {
-            Assert.assertTrue(pics.isDisplayed());
+        List<WebElement> images = driver.findElements(By.cssSelector(".benefit-icon span"));
+        Assert.assertEquals(images.size(), 4);
+        for (WebElement img: images) {
+            Assert.assertTrue(img.isDisplayed());
         }
 
         //8. Assert that there are 4 texts on the Home Page and check them by getting texts
+        List<WebElement> textBelowImg = driver.findElements(By.cssSelector(".benefit-txt"));
+        Assert.assertEquals(textBelowImg.size(), 4);
+
+        Assert.assertEquals(PRACTICES, driver.findElement(By.xpath("//span[contains(@class,'practise')]/../../span")).getText());
+        Assert.assertEquals(CUSTOM, driver.findElement(By.xpath("//span[contains(@class,'custom')]/../../span")).getText());
+        Assert.assertEquals(MULTI, driver.findElement(By.xpath("//span[contains(@class,'multi')]/../../span")).getText());
+        Assert.assertEquals(BASE, driver.findElement(By.xpath("//span[contains(@class,'base')]/../../span")).getText());
+        
         //9. Assert that there are the main header and the text below it on the Home Page
 
 
