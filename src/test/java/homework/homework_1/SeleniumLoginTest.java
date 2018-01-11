@@ -1,17 +1,14 @@
 package homework.homework_1;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import java.util.List;
 
-public class SeleniumLoginTest {
+public class SeleniumLoginTest extends TestBase {
     private static final String TITLE = "Index page";
     private static final String USERNAME = "Piter Chailovskii";
     private static final String PRACTICES = "To include good practices\n" +
@@ -31,20 +28,12 @@ public class SeleniumLoginTest {
             "EX EA COMMODO CONSEQUAT DUIS AUTE IRURE DOLOR IN REPREHENDERIT IN VOLUPTATE VELIT ESSE " +
             "CILLUM DOLORE EU FUGIAT NULLA PARIATUR.";
 
-    private WebDriver driver;
-
     //1.Create a new test, specify test name in accordance with checking functionality
-    @BeforeMethod
-    public void preconditions() {
-        driver = new ChromeDriver();
-        driver.manage().window().maximize();
-        //2. Open test site by URL
-        driver.navigate().to("https://jdi-framework.github.io/tests");
-    }
-
     @Test
     public void loginTest() {
-
+        //2. Open test site by URL
+        driver.navigate().to("https://jdi-framework.github.io/tests");
+        wait.until(ExpectedConditions.titleIs(TITLE));
         //3. Assert Browser title
         Assert.assertTrue(TITLE.equalsIgnoreCase(driver.getTitle()));
 
@@ -56,9 +45,7 @@ public class SeleniumLoginTest {
 
         //5. Assert User name in the left-top side of screen that user is loggined
         WebElement profileInfo = driver.findElement(By.cssSelector(".profile-photo span"));
-        Assert.assertTrue(profileInfo.isDisplayed());
-        String name = profileInfo.getText();
-        Assert.assertTrue(USERNAME.equalsIgnoreCase(name));
+        Assert.assertTrue(USERNAME.equalsIgnoreCase(profileInfo.getText()));
 
         //6. Assert Browser title
         Assert.assertTrue(TITLE.equalsIgnoreCase(driver.getTitle()));
@@ -73,9 +60,6 @@ public class SeleniumLoginTest {
         //8. Assert that there are 4 texts on the Home Page and check them by getting texts
         List<WebElement> textBelowImg = driver.findElements(By.cssSelector(".benefit-txt"));
         Assert.assertEquals(textBelowImg.size(), 4);
-        for (WebElement txt : textBelowImg) {
-            Assert.assertTrue(txt.isDisplayed());
-        }
 
         Assert.assertEquals(PRACTICES, driver.findElement(By.xpath("//span[contains(@class,'practise')]/../../span")).getText());
         Assert.assertEquals(CUSTOM, driver.findElement(By.xpath("//span[contains(@class,'custom')]/../../span")).getText());
@@ -84,20 +68,8 @@ public class SeleniumLoginTest {
 
         //9. Assert that there are the main header and the text below it on the Home Page
         WebElement actualMainTitle = driver.findElement(By.cssSelector(".main-txt"));
-        Assert.assertTrue(actualMainTitle.isDisplayed());
         Assert.assertEquals(MAIN_TEXT, actualMainTitle.getText());
         WebElement actualMainTxt = driver.findElement(By.cssSelector(".main-title"));
-        Assert.assertTrue(actualMainTxt.isDisplayed());
         Assert.assertEquals(MAIN_TITLE,actualMainTxt .getText());
-
     }
-
-    @AfterMethod
-    public void postconditions() {
-        //10. Close Browser
-        driver.close();
-        driver.quit();
-    }
-
-
 }
