@@ -1,0 +1,19 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="Suite1" verbose="1">
+    <test name="homeWork1">
+
+        <groups>
+            <run>
+                <include name="checkedTest"></include>
+                <exclude name="brokenTest"></exclude>
+            </run>
+        </groups>
+
+        <classes>
+            <class name="Lessons.l2018_01_10.SeleniumTest"></class>
+
+        </classes>
+
+    </test>
+</suite>

@@ -1,0 +1,9 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="Suite1" verbose="1" >
+    <test name="homeWork1">
+        <classes>
+            <class name="Lessons.l2018_01_12.DPTest"></class>
+        </classes>
+    </test>
+</suite>
