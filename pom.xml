@@ -100,6 +100,12 @@
                 <runner>homeWork2_ex2_regression.xml</runner>
             </properties>
         </profile>
+        <profile>
+            <id>hw2_3</id>
+            <properties>
+                <runner>homeWork2_ex3.xml</runner>
+            </properties>
+        </profile>
     </profiles>
 
 </project>
