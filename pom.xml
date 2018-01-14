@@ -88,6 +88,18 @@
                 <runner>homeWork2_ex1.xml</runner>
             </properties>
         </profile>
+        <profile>
+            <id>hw2_2s</id>
+            <properties>
+                <runner>homeWork2_ex2_smoke.xml</runner>
+            </properties>
+        </profile>
+        <profile>
+            <id>hw2_2r</id>
+            <properties>
+                <runner>homeWork2_ex2_regression.xml</runner>
+            </properties>
+        </profile>
     </profiles>
 
 </project>

@@ -36,24 +36,25 @@ public class SmokeRegressTest extends TestBase {
         };
     }
 
-    @Test(dataProvider = "data", groups = {"smoke", "regression"})
-    public void textCompareTest(String title, String content) {
+    @Test(dataProvider = "data", groups = "regression")
+    public void firstTest(String title, String content) {
         String commonLocator = "//span[contains(@class,'%s')]/../../span";
         wait.until(ExpectedConditions.textToBe(By.xpath(String.format(commonLocator, title)), content));
     }
 
-    @Test(groups = {"smoke", "regression"})
-    public void loginTest() {
+    @Test(groups = "regression")
+    public void secondTest() {
         driver.findElement(By.cssSelector(".uui-profile-menu")).click();
         driver.findElement(By.id("Login")).sendKeys("epam");
         driver.findElement(By.id("Password")).sendKeys("1234");
         driver.findElement(By.cssSelector(".uui-button")).click();
         WebElement profileInfo = driver.findElement(By.cssSelector(".profile-photo span"));
         Assert.assertTrue(USERNAME.equalsIgnoreCase(profileInfo.getText()));
+        driver.findElement(By.className("fa-sign-out")).click();
     }
 
-    @Test(groups = {"smoke", "regression"})
-    public void compareMainTest() {
+    @Test(groups = "smoke")
+    public void thirdTest() {
         List<WebElement> images = driver.findElements(By.cssSelector(".benefit-icon span"));
         Assert.assertEquals(images.size(), 4);
         for (WebElement img : images) {
@@ -64,6 +65,17 @@ public class SmokeRegressTest extends TestBase {
         Assert.assertEquals(MAIN_TEXT, actualMainTitle.getText());
         WebElement actualMainTxt = driver.findElement(By.cssSelector(".main-title"));
         Assert.assertEquals(MAIN_TITLE, actualMainTxt.getText());
+    }
+
+    @Test(groups = "smoke")
+    public void fourthTest() {
+
+        driver.findElement(By.cssSelector(".uui-profile-menu")).click();
+        driver.findElement(By.id("Login")).sendKeys("epam");
+        driver.findElement(By.id("Password")).sendKeys("0000");
+        driver.findElement(By.cssSelector(".uui-button")).click();
+        WebElement profileInfo = driver.findElement(By.cssSelector(".login-txt"));
+        Assert.assertEquals(profileInfo.getText(), "* Login Faild");
     }
 
 }
