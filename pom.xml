@@ -82,6 +82,12 @@
                 <runner>homeWork1.xml</runner>
             </properties>
         </profile>
+        <!--<profile>-->
+            <!--<id>hw2</id>-->
+            <!--<properties>-->
+                <!--<runner>homeWork2</runner>-->
+            <!--</properties>-->
+        <!--</profile>-->
     </profiles>
 
 </project>

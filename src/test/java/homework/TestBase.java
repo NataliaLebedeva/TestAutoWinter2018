@@ -1,20 +1,18 @@
-package homework.homework_1;
+package homework;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterClass;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeMethod;
 import org.testng.asserts.SoftAssert;
 
 import java.util.concurrent.TimeUnit;
 
 public class TestBase {
-    WebDriver driver;
-    WebDriverWait wait;
-    SoftAssert softAssert;
+    protected WebDriver driver;
+    protected WebDriverWait wait;
+    protected SoftAssert softAssert;
 
     @BeforeClass(alwaysRun = true)
     public void beforeClass() {

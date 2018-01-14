@@ -15,7 +15,7 @@ public class DPTest {
     }
 
     @Test (dataProvider = "data")
-    public void dpTest() {
-        //System.out.println("int: " + data() + " " + "String: " + data());
+    public void dpTest(int i, String s) {
+        System.out.println(String.format("int: %s, String %s", i, s));
     }
 }
