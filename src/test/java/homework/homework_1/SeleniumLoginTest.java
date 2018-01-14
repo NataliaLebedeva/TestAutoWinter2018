@@ -31,8 +31,7 @@ public class SeleniumLoginTest extends TestBase {
 
     @Test
     public void loginTest() {
-        //2. Open test site by URL
-        driver.navigate().to("https://jdi-framework.github.io/tests");
+
         //3. Assert Browser title
         wait.until(ExpectedConditions.titleIs(TITLE));
 

@@ -19,6 +19,7 @@ public class TestBase {
         driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.manage().window().maximize();
+        driver.get("https://jdi-framework.github.io/tests/index.htm");
         wait = new WebDriverWait(driver, 10);
         softAssert = new SoftAssert();
     }
