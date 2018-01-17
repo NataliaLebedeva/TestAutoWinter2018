@@ -1,9 +1,9 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 
 <suite name="Suite1" verbose="1" data-provider-thread-count="2">
-<test name="homeWork2_ex1" >
-    <classes>
-        <class name="homework.homework_2.ex1.exerciseDPTest"/>
-    </classes>
-</test>
+    <test name="homeWork2_ex1">
+        <classes>
+            <class name="homework.homework_2.ex1.TextDPTest"/>
+        </classes>
+    </test>
 </suite>

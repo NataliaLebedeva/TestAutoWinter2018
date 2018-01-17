@@ -10,7 +10,7 @@
 
         <classes>
             <class name="homework.homework_2.ex2.SmokeRegressTest"/>
-            <class name="homework.homework_2.ex2.Smoke_Test"/>
+            <class name="homework.homework_2.ex2.SmokeTest"/>
         </classes>
     </test>
 

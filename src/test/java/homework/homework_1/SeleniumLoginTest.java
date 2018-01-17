@@ -12,16 +12,10 @@ import java.util.List;
 public class SeleniumLoginTest extends TestBase {
     private static final String TITLE = "Index Page";
     private static final String USERNAME = "Piter Chailovskii";
-    private static final String PRACTICES = "To include good practices\n" +
-            "and ideas from successful\n" +
-            "EPAM projec";
-    private static final String CUSTOM = "To be flexible and\n" +
-            "customizable";
+    private static final String PRACTICES = "To include good practices and ideas from successful EPAM projec";
+    private static final String CUSTOM = "To be flexible and customizable";
     private static final String MULTI = "To be multiplatform";
-    private static final String BASE = "Already have good base\n" +
-            "(about 20 internal and\n" +
-            "some external projects),\n" +
-            "wish to get more\u2026";
+    private static final String BASE = "Already have good base (about 20 internal and some external projects), wish to get more\u2026";
     private static final String MAIN_TITLE = "EPAM FRAMEWORK WISHES\u2026";
     private static final String MAIN_TEXT = "LOREM IPSUM DOLOR SIT AMET, " +
             "CONSECTETUR ADIPISICING ELIT, SED DO EIUSMOD TEMPOR INCIDIDUNT UT LABORE ET DOLORE MAGNA " +
@@ -51,7 +45,7 @@ public class SeleniumLoginTest extends TestBase {
         //7. Assert that there are 4 images on the Home Page and they are displayed
         List<WebElement> images = driver.findElements(By.cssSelector(".benefit-icon span"));
         Assert.assertEquals(images.size(), 4);
-        for (WebElement img: images) {
+        for (WebElement img : images) {
             Assert.assertTrue(img.isDisplayed());
         }
 
@@ -60,17 +54,15 @@ public class SeleniumLoginTest extends TestBase {
         Assert.assertEquals(textBelowImg.size(), 4);
 
         String commonLocator = "//span[contains(@class,'%s')]/../../span";
-        softAssert.assertEquals(PRACTICES,  driver.findElement(By.xpath(String.format(commonLocator,"practise"))).getText());
-        softAssert.assertEquals(CUSTOM,     driver.findElement(By.xpath(String.format(commonLocator,"custom"))).getText());
-        softAssert.assertEquals(MULTI,      driver.findElement(By.xpath(String.format(commonLocator,"multi"))).getText());
-        softAssert.assertEquals(BASE,       driver.findElement(By.xpath(String.format(commonLocator,"base"))).getText());
+        Assert.assertEquals(driver.findElement(By.xpath(String.format(commonLocator, "practise"))).getText().replaceAll("\n", " "), PRACTICES);
+        Assert.assertEquals(driver.findElement(By.xpath(String.format(commonLocator, "custom"))).getText().replaceAll("\n", " "), CUSTOM);
+        Assert.assertEquals(driver.findElement(By.xpath(String.format(commonLocator, "multi"))).getText().replaceAll("\n", " "), MULTI);
+        Assert.assertEquals(driver.findElement(By.xpath(String.format(commonLocator, "base"))).getText().replaceAll("\n", " "), BASE);
 
         //9. Assert that there are the main header and the text below it on the Home Page
-        WebElement actualMainTitle = driver.findElement(By.cssSelector(".main-txt"));
-        Assert.assertEquals(MAIN_TEXT, actualMainTitle.getText());
-        WebElement actualMainTxt = driver.findElement(By.cssSelector(".main-title"));
-        Assert.assertEquals(MAIN_TITLE,actualMainTxt .getText());
+        Assert.assertEquals(MAIN_TEXT, driver.findElement(By.cssSelector(".main-txt")).getText());
+        Assert.assertEquals(MAIN_TITLE, driver.findElement(By.cssSelector(".main-title")).getText());
 
-        softAssert.assertAll();
+
     }
 }
