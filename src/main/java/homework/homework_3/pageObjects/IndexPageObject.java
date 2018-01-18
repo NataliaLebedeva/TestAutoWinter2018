@@ -4,6 +4,9 @@ import homework.homework_3.data.User;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+
+import static org.testng.Assert.*;
 
 public class IndexPageObject extends Page {
 
@@ -31,14 +34,17 @@ public class IndexPageObject extends Page {
 
     public void open() {
         driver.get("https://jdi-framework.github.io/tests/index.htm");
+        wait.until(ExpectedConditions.titleIs("Index Page"));
     }
 
     public void login(User user) {
-
+        userLogin.sendKeys(user.getLogin());
+        userPassword.sendKeys(user.getPassword());
+        submitButton.click();
     }
 
-    public void checkUserInfo() {
-
+    public void checkUserInfo(User user) {
+        assertEquals(profileInfo.getText(), user.getUserName());
     }
 
     public void checkTextBelowPic() {

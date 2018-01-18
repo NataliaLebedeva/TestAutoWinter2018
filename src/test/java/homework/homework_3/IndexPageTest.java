@@ -5,16 +5,36 @@ import homework.homework_3.pageObjects.IndexPageObject;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.PageFactory;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Test;
+
+import static homework.homework_3.data.User.PITER_CHAILOVSKII;
+import static java.util.concurrent.TimeUnit.SECONDS;
 
 public class IndexPageTest {
 
-    private WebDriver driver = new ChromeDriver();
+    WebDriver driver;
+    private IndexPageObject indexPage;
 
+    @BeforeTest
+    public void beforeTest() {
+        driver = new ChromeDriver();
+        driver.manage().timeouts().implicitlyWait(10, SECONDS);
+        driver.manage().window().maximize();
+        indexPage = PageFactory.initElements(driver, IndexPageObject.class);
+    }
+
+    @AfterTest
+    public void afterMethod() {
+        driver.close();
+    }
+
+    @Test
     public void indexPageTest() {
-        IndexPageObject indexPage = PageFactory.initElements(driver, IndexPageObject.class);
         indexPage.open();
-        indexPage.login(new User("epam", "1234"));
-        indexPage.checkUserInfo();
+        indexPage.login(PITER_CHAILOVSKII);
+        indexPage.checkUserInfo(PITER_CHAILOVSKII);
         indexPage.checkTextBelowPic();
         indexPage.checkMainText();
     }
