@@ -1,6 +1,5 @@
 package homework.homework_3;
 
-import homework.homework_3.data.User;
 import homework.homework_3.pageObjects.IndexPageObject;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -9,7 +8,7 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
-import static homework.homework_3.data.User.PITER_CHAILOVSKII;
+import static homework.homework_3.entities.User.PITER_CHAILOVSKII;
 import static java.util.concurrent.TimeUnit.SECONDS;
 
 public class IndexPageTest {
@@ -26,7 +25,7 @@ public class IndexPageTest {
     }
 
     @AfterTest
-    public void afterMethod() {
+    public void afterTest() {
         driver.close();
     }
 
@@ -36,6 +35,6 @@ public class IndexPageTest {
         indexPage.login(PITER_CHAILOVSKII);
         indexPage.checkUserInfo(PITER_CHAILOVSKII);
         indexPage.checkTextBelowPic();
-        indexPage.checkMainText();
+//        indexPage.checkMainText();
     }
 }

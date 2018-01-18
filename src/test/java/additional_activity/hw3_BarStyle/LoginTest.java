@@ -22,7 +22,7 @@
 //    }
 //
 //    @Test
-//    //(dataProviderClass = innerDataProvider.class, dataProvider = "data")
+//    //(dataProviderClass = innerDataProvider.class, dataProvider = "enums")
 //    public void login2Test() {
 ////String locator, String textBelowPic
 //        //3. Assert Browser title
