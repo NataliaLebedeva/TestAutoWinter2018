@@ -8,3 +8,6 @@
 2. `mvn test -P hw2_2s`    - for smoke tests
 3. `mvn test -P hw2_2r`    - for regression tests
 4. `mvn test -P hw2_3`     - for annotations test
+
+## Home work 2
+`mvn test -P hw3`
