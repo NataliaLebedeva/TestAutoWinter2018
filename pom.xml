@@ -112,6 +112,12 @@
                 <runner>homeWork2_ex3.xml</runner>
             </properties>
         </profile>
+        <profile>
+            <id>hw3</id>
+            <properties>
+                <runner>homeWork3.xml</runner>
+            </properties>
+        </profile>
     </profiles>
 
 </project>

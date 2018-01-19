@@ -4,7 +4,7 @@ import lombok.Getter;
 
 @Getter
 public enum MainTextEnum {
-    MAIN_TITLE("EPAM FRAMEWORK WISHES…"),
+    MAIN_TITLE("EPAM FRAMEWORK WISHES\u2026"),
     MAIN_TEXT("LOREM IPSUM DOLOR SIT AMET, CONSECTETUR ADIPISICING ELIT, " +
             "SED DO EIUSMOD TEMPOR INCIDIDUNT UT LABORE ET DOLORE MAGNA ALIQUA. " +
             "UT ENIM AD MINIM VENIAM, QUIS NOSTRUD EXERCITATION ULLAMCO " +
@@ -13,5 +13,7 @@ public enum MainTextEnum {
             "FUGIAT NULLA PARIATUR.");
     public String text;
 
-    MainTextEnum(String text) {this.text = text;}
+    MainTextEnum(String text) {
+        this.text = text;
+    }
 }
