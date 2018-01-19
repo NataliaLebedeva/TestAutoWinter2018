@@ -35,6 +35,6 @@ public class IndexPageTest {
         indexPage.login(PITER_CHAILOVSKII);
         indexPage.checkUserInfo(PITER_CHAILOVSKII);
         indexPage.checkTextBelowPic();
-//        indexPage.checkMainText();
+        indexPage.checkMainText();
     }
 }

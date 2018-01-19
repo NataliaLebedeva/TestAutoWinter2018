@@ -2,6 +2,7 @@ package homework.homework_3.pageObjects;
 
 import homework.homework_3.entities.User;
 import homework.homework_3.enums.IndexPageTextEnum;
+import homework.homework_3.enums.MainTextEnum;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindAll;
@@ -69,6 +70,8 @@ public class IndexPageObject extends Page {
     }
 
     public void checkMainText() {
-
+        MainTextEnum[] values = MainTextEnum.values();
+        assertEquals(mainTitle.getText(), values[0].getText());
+        assertEquals(mainText.getText(), values[1].getText());
     }
 }
