@@ -10,6 +10,7 @@ public class JDISiteTest1 extends SelenideBase {
         indexPage.checkBenefitsTextsStream();
         indexPage.checkBenefitsIcon();
         indexPage.checkMainText();
+
     }
 
 

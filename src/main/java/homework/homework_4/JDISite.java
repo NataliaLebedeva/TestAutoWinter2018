@@ -1,6 +1,5 @@
 package homework.homework_4;
 
-import homework.homework_4.SelenideBase;
 import homework.homework_4.pageObjects.CommonPage;
 import homework.homework_4.pageObjects.DifferentElementsPage;
 import homework.homework_4.pageObjects.IndexPage;
