@@ -22,7 +22,7 @@ public class Application {
 
     public void performLogin() {
         indexPage.open();
-//        indexPage.userLoginMenu.click();
+//        homePage.userLoginMenu.click();
 //        wait.until(ExpectedConditions.titleIs(innerDataProvider.TITLE));
         driver.findElement(By.cssSelector(".uui-profile-menu")).click();
         driver.findElement(By.id("Login")).sendKeys("epam");

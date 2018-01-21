@@ -11,7 +11,7 @@ import org.testng.annotations.Test;
 import static homework.homework_3.entities.User.PITER_CHAILOVSKII;
 import static java.util.concurrent.TimeUnit.SECONDS;
 
-public class IndexPageTest {
+public class HomePageTest {
 
     WebDriver driver;
     private IndexPageObject indexPage;

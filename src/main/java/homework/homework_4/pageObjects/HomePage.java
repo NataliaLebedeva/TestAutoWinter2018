@@ -21,7 +21,7 @@ import static com.codeborne.selenide.Selenide.title;
 import static homework.homework_4.enums.MainTextEnum.MAIN_TEXT;
 import static homework.homework_4.enums.MainTextEnum.MAIN_TITLE;
 
-public class IndexPage {
+public class HomePage {
 
     @FindAll(
             @FindBy(css = ".benefit-icon")
