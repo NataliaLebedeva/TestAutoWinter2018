@@ -30,6 +30,14 @@
             <artifactId>lombok</artifactId>
             <version>1.16.18</version>
         </dependency>
+
+        <dependency>
+            <groupId>com.codeborne</groupId>
+            <artifactId>selenide</artifactId>
+            <version>4.9.1</version>
+            <!--<scope>test</scope>-->
+        </dependency>
+
     </dependencies>
 
     <build>

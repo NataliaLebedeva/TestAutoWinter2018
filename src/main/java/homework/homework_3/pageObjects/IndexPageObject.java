@@ -62,7 +62,7 @@ public class IndexPageObject extends Page {
         assertEquals(profileInfo.getText().toLowerCase(), user.getUserName().toLowerCase());
     }
 
-    public void checkTextBelowPic() {
+    public void checkBenefitsTexts() {
         IndexPageTextEnum[] values = IndexPageTextEnum.values();
         for (int i = 0; i < values.length; i++) {
             assertEquals(benefitTxt.get(i).getText().replaceAll("\n", " "), values[i].getText());
