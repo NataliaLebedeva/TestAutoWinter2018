@@ -24,23 +24,26 @@ public class SelenideBase {
         Configuration.collectionsPollingInterval = 300;
 
         init();
-
+        //open site by URL
         open("https://jdi-framework.github.io/tests/index.htm");
     }
 
     @AfterSuite
     public void afterSuite() {
+        //close driver after non-parallel test methods
         WebDriverRunner.closeWebDriver();
     }
 
     @BeforeMethod
     public void beforeMethod() {
+        //perform login before every method
         loginForm.login(PITER_CHAILOVSKII);
         loginForm.checkUserInfo(PITER_CHAILOVSKII);
     }
 
     @AfterMethod
     public void afterMethod() {
+        //logout after method
         loginForm.logout();
     }
 }

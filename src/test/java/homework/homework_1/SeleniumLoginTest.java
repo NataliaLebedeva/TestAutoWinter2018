@@ -10,14 +10,14 @@ import org.testng.annotations.Test;
 import java.util.List;
 
 public class SeleniumLoginTest extends TestBase {
-    private static final String TITLE = "Index Page";
-    private static final String USERNAME = "Piter Chailovskii";
-    private static final String PRACTICES = "To include good practices and ideas from successful EPAM projec";
-    private static final String CUSTOM = "To be flexible and customizable";
-    private static final String MULTI = "To be multiplatform";
-    private static final String BASE = "Already have good base (about 20 internal and some external projects), wish to get more\u2026";
-    private static final String MAIN_TITLE = "EPAM FRAMEWORK WISHES\u2026";
-    private static final String MAIN_TEXT = "LOREM IPSUM DOLOR SIT AMET, " +
+    private final String TITLE = "Index Page";
+    private final String USERNAME = "Piter Chailovskii";
+    private final String PRACTICES = "To include good practices and ideas from successful EPAM projec";
+    private final String CUSTOM = "To be flexible and customizable";
+    private final String MULTI = "To be multiplatform";
+    private final String BASE = "Already have good base (about 20 internal and some external projects), wish to get more\u2026";
+    private final String MAIN_TITLE = "EPAM FRAMEWORK WISHES\u2026";
+    private final String MAIN_TEXT = "LOREM IPSUM DOLOR SIT AMET, " +
             "CONSECTETUR ADIPISICING ELIT, SED DO EIUSMOD TEMPOR INCIDIDUNT UT LABORE ET DOLORE MAGNA " +
             "ALIQUA. UT ENIM AD MINIM VENIAM, QUIS NOSTRUD EXERCITATION ULLAMCO LABORIS NISI UT ALIQUIP " +
             "EX EA COMMODO CONSEQUAT DUIS AUTE IRURE DOLOR IN REPREHENDERIT IN VOLUPTATE VELIT ESSE " +

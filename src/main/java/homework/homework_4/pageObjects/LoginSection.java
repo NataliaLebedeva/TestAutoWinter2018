@@ -11,12 +11,10 @@ public class LoginSection {
     @FindBy(css = ".uui-profile-menu")
     private SelenideElement dropdownProfileMenu;
 
-//    @FindBy(css = ".col-sm-9 [id ='Login']")
-    @FindBy(id = "Login")
+    @FindBy(css = ".col-sm-9 [id ='Login']")
     private SelenideElement userLogin;
 
-//    @FindBy(css = ".col-sm-9 [id ='Password']")
-    @FindBy(id = "Password")
+    @FindBy(css = ".col-sm-9 [id ='Password']")
     private SelenideElement userPassword;
 
     @FindBy(css = ".uui-button")
