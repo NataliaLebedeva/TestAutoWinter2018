@@ -12,6 +12,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import java.util.List;
 
 import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertTrue;
 
 public class IndexPageObject extends Page {
 
@@ -30,11 +31,11 @@ public class IndexPageObject extends Page {
     @FindBy(css = ".profile-photo span")
     private WebElement profileInfo;
 
-    @FindAll(
-            @FindBy(css = ".benefit-txt")
-    )
+    @FindBy(css = ".benefit-txt")
     private List<WebElement> benefitTxt;
 
+    @FindBy(css = ".benefit-icon")
+    private List<WebElement> benefitIcon;
 
     @FindBy(css = ".main-txt")
     private WebElement mainText;
@@ -42,12 +43,15 @@ public class IndexPageObject extends Page {
     @FindBy(css = ".main-title")
     private WebElement mainTitle;
 
+
     public IndexPageObject(WebDriver driver) {
         super(driver);
     }
 
     public void open() {
+        //2. Open index page
         driver.get("https://jdi-framework.github.io/tests/index.htm");
+        //3. Assert Browser title
         wait.until(ExpectedConditions.titleIs("Index Page"));
     }
 
@@ -60,6 +64,12 @@ public class IndexPageObject extends Page {
 
     public void checkUserInfo(User user) {
         assertEquals(profileInfo.getText().toLowerCase(), user.getUserName().toLowerCase());
+    }
+
+    public void checkBenefitIcons() {
+        for (WebElement e : benefitIcon) {
+            assertTrue(e.isDisplayed());
+        }
     }
 
     public void checkBenefitsTexts() {

@@ -5,7 +5,6 @@ import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import homework.homework_4.enums.BenefitsTextEnum;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 import org.testng.Assert;
 
@@ -18,21 +17,15 @@ import static com.codeborne.selenide.CollectionCondition.size;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.title;
-import static homework.homework_4.enums.MainTextEnum.MAIN_TEXT;
-import static homework.homework_4.enums.MainTextEnum.MAIN_TITLE;
+import static homework.homework_4.enums.MainTextEnum.*;
 
 public class HomePage {
 
-    @FindAll(
-            @FindBy(css = ".benefit-icon")
-    )
+    @FindBy(css = ".benefit-icon")
     private ElementsCollection benefitIcon;
 
-    @FindAll(
-            @FindBy(css = ".benefit-txt")
-    )
+    @FindBy(css = ".benefit-txt")
     private ElementsCollection benefitTxt;
-
 
     @FindBy(css = ".main-txt")
     private SelenideElement mainText;
@@ -41,7 +34,7 @@ public class HomePage {
     private SelenideElement mainTitle;
 
     public void checkPageTitle() {
-        Assert.assertTrue(title().equals("Index Page"));
+        Assert.assertTrue(title().equals(PAGE_TITLE.getText()));
     }
 
     public void checkBenefitsIcon() {

@@ -7,21 +7,25 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class SeleniumLoginTest extends TestBase {
     private final String TITLE = "Index Page";
     private final String USERNAME = "Piter Chailovskii";
-    private final String PRACTICES = "To include good practices and ideas from successful EPAM projec";
-    private final String CUSTOM = "To be flexible and customizable";
-    private final String MULTI = "To be multiplatform";
-    private final String BASE = "Already have good base (about 20 internal and some external projects), wish to get more\u2026";
     private final String MAIN_TITLE = "EPAM FRAMEWORK WISHES\u2026";
     private final String MAIN_TEXT = "LOREM IPSUM DOLOR SIT AMET, " +
             "CONSECTETUR ADIPISICING ELIT, SED DO EIUSMOD TEMPOR INCIDIDUNT UT LABORE ET DOLORE MAGNA " +
             "ALIQUA. UT ENIM AD MINIM VENIAM, QUIS NOSTRUD EXERCITATION ULLAMCO LABORIS NISI UT ALIQUIP " +
             "EX EA COMMODO CONSEQUAT DUIS AUTE IRURE DOLOR IN REPREHENDERIT IN VOLUPTATE VELIT ESSE " +
             "CILLUM DOLORE EU FUGIAT NULLA PARIATUR.";
+
+    private final List<String> texts = new ArrayList<String>(){{
+        add("To include good practices and ideas from successful EPAM projec");
+        add("To be flexible and customizable");
+        add("To be multiplatform");
+        add("Already have good base (about 20 internal and some external projects), wish to get more\u2026");
+    }};
 
     @Test
     public void loginTest() {
@@ -52,12 +56,10 @@ public class SeleniumLoginTest extends TestBase {
         //8. Assert that there are 4 texts on the Home Page and check them by getting texts
         List<WebElement> textBelowImg = driver.findElements(By.cssSelector(".benefit-txt"));
         Assert.assertEquals(textBelowImg.size(), 4);
-
-        String commonLocator = "//span[contains(@class,'%s')]/../../span";
-        Assert.assertEquals(driver.findElement(By.xpath(String.format(commonLocator, "practise"))).getText().replaceAll("\n", " "), PRACTICES);
-        Assert.assertEquals(driver.findElement(By.xpath(String.format(commonLocator, "custom"))).getText().replaceAll("\n", " "), CUSTOM);
-        Assert.assertEquals(driver.findElement(By.xpath(String.format(commonLocator, "multi"))).getText().replaceAll("\n", " "), MULTI);
-        Assert.assertEquals(driver.findElement(By.xpath(String.format(commonLocator, "base"))).getText().replaceAll("\n", " "), BASE);
+        for(int i = 0; i < texts.size(); i++) {
+            Assert.assertEquals(textBelowImg.get(i).getText().replaceAll("\n", " "), texts.get(i));
+//            assertContains(texts.contains(element.getText()));
+        }
 
         //9. Assert that there are the main header and the text below it on the Home Page
         Assert.assertEquals(MAIN_TEXT, driver.findElement(By.cssSelector(".main-txt")).getText());

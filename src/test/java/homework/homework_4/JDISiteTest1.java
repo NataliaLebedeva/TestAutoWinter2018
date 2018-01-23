@@ -1,8 +1,11 @@
 package homework.homework_4;
 
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import static homework.homework_4.JDISite.*;
+import static homework.homework_4.entities.User.PITER_CHAILOVSKII;
 import static homework.homework_4.pageObjects.CommonPage.JDI_SITE_PAGES.DIFFERENT_ELEMENTS;
 import static homework.homework_4.pageObjects.CommonPage.JDI_SITE_PAGES.SERVICE;
 import static homework.homework_4.pageObjects.CommonPage.MENU_TYPE.HEADER;
@@ -13,10 +16,23 @@ import static homework.homework_4.pageObjects.DifferentElementsPage.NATURE_ELEME
 
 public class JDISiteTest1 extends SelenideBase {
 
-    @Test
-    public void indexPageTest() {
+    @BeforeMethod
+    public void beforeMethod() {
+        //perform login before every method
+        loginForm.login(PITER_CHAILOVSKII);
+        loginForm.checkUserInfo(PITER_CHAILOVSKII);
+    }
 
-        //check interfase of the home page
+    @AfterMethod
+    public void afterMethod() {
+        //logout after method
+        loginForm.logout();
+    }
+
+    @Test
+    public void differentElementsTest() {
+
+        //check interface of the home page
         homePage.checkPageTitle();
         homePage.checkBenefitsTextsStream();
         homePage.checkBenefitsIcon();

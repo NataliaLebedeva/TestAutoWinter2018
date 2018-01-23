@@ -1,10 +1,10 @@
 package homework.homework_4.enums;
 
 import lombok.Getter;
-import lombok.ToString;
 
 @Getter
 public enum MainTextEnum {
+    PAGE_TITLE("Index Page"),
     MAIN_TITLE("EPAM FRAMEWORK WISHES\u2026"),
     MAIN_TEXT("LOREM IPSUM DOLOR SIT AMET, CONSECTETUR ADIPISICING ELIT, " +
             "SED DO EIUSMOD TEMPOR INCIDIDUNT UT LABORE ET DOLORE MAGNA ALIQUA. " +
