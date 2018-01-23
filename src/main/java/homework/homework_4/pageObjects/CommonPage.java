@@ -47,7 +47,6 @@ public class CommonPage {
 
     @FindBy(css = "header a[href='page8.htm']")
     public SelenideElement differentElements;
-    //
 
     @FindBy(css = "header a[href='page2.htm']")
     public SelenideElement metalsColors;
@@ -58,7 +57,8 @@ public class CommonPage {
     @FindBy(css = ".sidebar-menu a[href='page1.htm']")
     public SelenideElement sideContactForm;
 
-    @FindBy(css = ".sidebar-menu [class='sub-menu']")
+    //@FindBy(css = ".sidebar-menu [class='sub-menu']")
+    @FindBy(css = "[class='sub-menu'] a[href='page1.htm']")
     public SelenideElement sideService;
 
     @FindBy(css = ".sidebar-menu a[href='page2.htm']")
@@ -82,7 +82,6 @@ public class CommonPage {
 
     @FindBy(css = ".sidebar-menu a[href='page8.htm']")
     public SelenideElement sideDifferentElements;
-    //
 
     static private HashMap<JDI_SITE_PAGES, Consumer<CommonPage>> headerActions =
             new HashMap<JDI_SITE_PAGES, Consumer<CommonPage>>() {{

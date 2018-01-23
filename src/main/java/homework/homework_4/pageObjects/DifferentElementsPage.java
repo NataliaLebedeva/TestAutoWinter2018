@@ -1,26 +1,30 @@
 package homework.homework_4.pageObjects;
 
-import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
+import com.google.common.collect.Lists;
+import homework.homework_4.utils.elements.ColorsDropdown;
+import homework.homework_4.utils.elements.IShouldBeVisible;
+import homework.homework_4.utils.elements.MetalsRadioButtonGroup;
+import homework.homework_4.utils.elements.NatureElementsCheckbox;
+import lombok.val;
 import org.openqa.selenium.support.FindBy;
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
+import org.testng.Assert;
 
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.Arrays;
 import java.util.List;
-import java.util.Objects;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import static com.codeborne.selenide.Condition.*;
-import static homework.homework_4.pageObjects.DifferentElementsPage.ACTIONS.*;
+import static com.codeborne.selenide.Condition.visible;
+import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.$$;
 
 public class DifferentElementsPage {
-
 
     public enum NATURE_ELEMENT {
         WATER, EARTH, WIND, FIRE;
     }
-
 
     public enum METALS {
         GOLD, SILVER, BRONZE, SELEN;
@@ -34,32 +38,14 @@ public class DifferentElementsPage {
         SET_ELEMENT, UNSET_ELEMENT, SELECT_METAL, SELECT_COLOR;
     }
 
-    //NATURE_ELEMENTS
-    @FindBy(xpath = "//*[text()[contains(.,'Water')]]//input")
-    public SelenideElement water;
-    @FindBy(xpath = "//*[text()[contains(.,'Earth')]]//input")
-    public SelenideElement earth;
-    @FindBy(xpath = "//*[text()[contains(.,'Wind')]]//input")
-    public SelenideElement wind;
-    @FindBy(xpath = "//*[text()[contains(.,'Fire')]]//input")
-    public SelenideElement fire;
+    private NatureElementsCheckbox natureElementsCheckbox = new NatureElementsCheckbox("[type='checkbox']");
 
+    private MetalsRadioButtonGroup metals = new MetalsRadioButtonGroup($$(".label-radio input"));
 
-    //METALS
-    @FindBy(xpath = "//*[text()[contains(.,'Gold')]]//input")
-    public SelenideElement gold;
-    @FindBy(xpath = "//*[text()[contains(.,'Silver')]]//input")
-    public SelenideElement silver;
-    @FindBy(xpath = "//*[text()[contains(.,'Bronze')]]//input")
-    public SelenideElement bronze;
-    @FindBy(xpath = "//*[text()[contains(.,'Selen')]]//input")
-    public SelenideElement selen;
-
-    //COLORS
-    @FindBy(css = ".colors")
-    public SelenideElement colors;
-    @FindBy(css = ".uui-form-element option")
-    public List<SelenideElement> listOfColors;
+    private ColorsDropdown colorsDropdown = new ColorsDropdown(
+            $(".colors .uui-form-element"),
+            $$(".uui-form-element option")
+    );
 
     // other elements
     @FindBy(css = ".uui-button[value ='Default Button']")
@@ -73,102 +59,52 @@ public class DifferentElementsPage {
     public SelenideElement results;
 
     public void checkInterface() {
-        Stream<SelenideElement> elements = Stream.of(water, earth, wind, fire,
-                gold, silver, bronze, selen, colors, defaultButton, simpleButton, logs, results);
-        elements.forEach(e -> e.shouldBe(visible));
-
+        Stream.of(natureElementsCheckbox, metals, colorsDropdown).forEach(IShouldBeVisible::shouldBeVisible);
+        Stream.of(defaultButton, simpleButton, logs, results).forEach(se -> se.shouldBe(visible));
     }
 
-    public static HashMap<Object, List<ACTIONS>> actionsLog = new HashMap<>();
-
     public void setNatureElement(NATURE_ELEMENT... elements) {
-        for (NATURE_ELEMENT element : elements) {
-            switch (element) {
-                case WATER:
-                    water.click();
-                    break;
-                case EARTH:
-                    earth.click();
-                    break;
-                case WIND:
-                    wind.click();
-                    break;
-                case FIRE:
-                    fire.click();
-                    break;
-            }
-            log(element, SET_ELEMENT);
+        for (val element : elements) {
+            natureElementsCheckbox.check(element);
+            totalLogs.add(String.format("%s: condition changed to true", element.toString()));
         }
     }
 
     public void unsetNatureElement(NATURE_ELEMENT... elements) {
         for (NATURE_ELEMENT element : elements) {
-            switch (element) {
-                case WATER:
-                    water.click();
-                    break;
-                case EARTH:
-                    earth.click();
-                    break;
-                case WIND:
-                    wind.click();
-                    break;
-                case FIRE:
-                    fire.click();
-                    break;
-            }
-            log(element, UNSET_ELEMENT);
+            natureElementsCheckbox.unCheck(element);
+            totalLogs.add(String.format("%s: condition changed to false", element.toString()));
         }
     }
 
     public void selectMetal(METALS metal) {
-        switch (metal) {
-            case GOLD:
-                gold.click();
-                break;
-            case SILVER:
-                silver.click();
-                break;
-            case BRONZE:
-                bronze.click();
-                break;
-            case SELEN:
-                selen.click();
-        }
-        log(metal, SELECT_METAL);
+        metals.check(metal);
+        totalLogs.add(String.format("metal: value changed to %s", metal.toString()));
     }
 
     public void selectColor(COLORS color) {
-        switch (color) {
-            case RED:
-                colors.click();
-                listOfColors.get(0).click();
-                break;
-            case GREEN:
-                colors.click();
-                listOfColors.get(1).click();
-                break;
-            case BLUE:
-                colors.click();
-                listOfColors.get(2).click();
-                break;
-            case YELLOW:
-                colors.click();
-                listOfColors.get(3).click();
-                break;
-        }
-          log(color, SELECT_COLOR);
+        colorsDropdown.select(color);
+        totalLogs.add(String.format("Colors: value changed to %s", color.toString()));
     }
 
-    public void checkNatureElement() {
+    /// LOG
 
-    }
+    public static List<String> totalLogs = new ArrayList<>();
 
-    private static void log(Object element, ACTIONS action) {
-        if (!actionsLog.containsKey(element)) {
-            actionsLog.put(element, new ArrayList<>());
-        }
-        actionsLog.get(element).add(action);
+    public static void checkLog(DifferentElementsPage difElementPage) {
+        String expectedLog = Lists
+                .reverse(DifferentElementsPage.totalLogs).stream()
+                .collect(Collectors.joining("|"))
+                .toLowerCase()
+                .replaceAll(" ", "");
+
+        String actualLog = Arrays.stream(difElementPage.logs.getText().split("\n"))
+                .map(s -> s.replaceAll("(\\d{2}:\\d{2}:\\d{2})", ""))
+                .collect(Collectors.joining("|"))
+                .toLowerCase()
+                .replaceAll(" ", "");
+
+        Assert.assertEquals(expectedLog, actualLog);
     }
 
 }

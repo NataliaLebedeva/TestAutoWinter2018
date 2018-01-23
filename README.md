@@ -9,5 +9,5 @@
 3. `mvn test -P hw2_2r`    - for regression tests
 4. `mvn test -P hw2_3`     - for annotations test
 
-## Home work 2
+## Home work 3
 `mvn test -P hw3`

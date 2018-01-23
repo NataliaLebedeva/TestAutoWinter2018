@@ -1,7 +1,6 @@
 package homework.homework_4;
 
 import homework.homework_4.pageObjects.DifferentElementsPage;
-import homework.homework_4.pageObjects.DifferentElementsPage.COLORS;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -12,9 +11,8 @@ import static homework.homework_4.pageObjects.CommonPage.JDI_SITE_PAGES.DIFFEREN
 import static homework.homework_4.pageObjects.CommonPage.JDI_SITE_PAGES.SERVICE;
 import static homework.homework_4.pageObjects.CommonPage.MENU_TYPE.HEADER;
 import static homework.homework_4.pageObjects.CommonPage.MENU_TYPE.SIDE_BAR;
-import static homework.homework_4.pageObjects.DifferentElementsPage.COLORS.*;
+import static homework.homework_4.pageObjects.DifferentElementsPage.COLORS.YELLOW;
 import static homework.homework_4.pageObjects.DifferentElementsPage.METALS.SELEN;
-import static homework.homework_4.pageObjects.DifferentElementsPage.NATURE_ELEMENT.FIRE;
 import static homework.homework_4.pageObjects.DifferentElementsPage.NATURE_ELEMENT.WATER;
 import static homework.homework_4.pageObjects.DifferentElementsPage.NATURE_ELEMENT.WIND;
 
@@ -65,10 +63,15 @@ public class JDISiteTest1 extends SelenideBase {
 
         //10. Select in dropdown Yellow
         difElementPage.selectColor(YELLOW);
-        //11. Check in logs section selected values and status
 
-//        difElementPage.selectMetal(GOLD);
-//        difElementPage.selectMetal(SILVER);
+        //11. Check in logs section selected values and status
+        DifferentElementsPage.checkLog(difElementPage);
+
+        //12. Unselect and assert checkboxes
+        difElementPage.unsetNatureElement(WATER, WIND);
+
+        //13. Check in logs section unselected values and status
+        DifferentElementsPage.checkLog(difElementPage);
     }
 
 
