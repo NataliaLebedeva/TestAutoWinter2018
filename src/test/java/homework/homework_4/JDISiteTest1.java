@@ -1,5 +1,7 @@
 package homework.homework_4;
 
+import homework.homework_4.pageObjects.DifferentElementsPage;
+import homework.homework_4.pageObjects.DifferentElementsPage.COLORS;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -10,16 +12,19 @@ import static homework.homework_4.pageObjects.CommonPage.JDI_SITE_PAGES.DIFFEREN
 import static homework.homework_4.pageObjects.CommonPage.JDI_SITE_PAGES.SERVICE;
 import static homework.homework_4.pageObjects.CommonPage.MENU_TYPE.HEADER;
 import static homework.homework_4.pageObjects.CommonPage.MENU_TYPE.SIDE_BAR;
-import static homework.homework_4.pageObjects.DifferentElementsPage.METALS.GOLD;
-import static homework.homework_4.pageObjects.DifferentElementsPage.METALS.SILVER;
-import static homework.homework_4.pageObjects.DifferentElementsPage.NATURE_ELEMENT.*;
+import static homework.homework_4.pageObjects.DifferentElementsPage.COLORS.*;
+import static homework.homework_4.pageObjects.DifferentElementsPage.METALS.SELEN;
+import static homework.homework_4.pageObjects.DifferentElementsPage.NATURE_ELEMENT.FIRE;
+import static homework.homework_4.pageObjects.DifferentElementsPage.NATURE_ELEMENT.WATER;
+import static homework.homework_4.pageObjects.DifferentElementsPage.NATURE_ELEMENT.WIND;
 
 public class JDISiteTest1 extends SelenideBase {
 
     @BeforeMethod
     public void beforeMethod() {
-        //perform login before every method
+        //1. perform login before every method
         loginForm.login(PITER_CHAILOVSKII);
+        //2. check user info
         loginForm.checkUserInfo(PITER_CHAILOVSKII);
     }
 
@@ -32,27 +37,36 @@ public class JDISiteTest1 extends SelenideBase {
     @Test
     public void differentElementsTest() {
 
-        //check interface of the home page
+        //3. check interface of the home page
         homePage.checkPageTitle();
         homePage.checkBenefitsTextsStream();
         homePage.checkBenefitsIcon();
         homePage.checkMainText();
 
-        //click on "Service" subcategory in the header and check that drop down contains options
+        //4. click on "Service" subcategory in the header and check that drop down contains options
         commonPage.openPage(HEADER, SERVICE);
         commonPage.checkSubMenu(HEADER);
 
-        //click on "Service" subcategory in the left section and check that drop down contains options
+        //5. click on "Service" subcategory in the left section and check that drop down contains options
         commonPage.openPage(SIDE_BAR, SERVICE);
         commonPage.checkSubMenu(SIDE_BAR);
 
-        //Open through the header menu Service -> Different Elements Page
+        //6. Open through the header menu Service -> Different Elements Page
         commonPage.openPage(HEADER, DIFFERENT_ELEMENTS);
 
-        //Check interface on Service page, it contains all needed elements.
+        //7. Check interface on Service page, it contains all needed elements.
+        difElementPage.checkInterface();
 
-//        difElementPage.setNatureElement(EARTH, WIND, FIRE);
-//        difElementPage.selectMetal(SILVER);
+        //8. Select and assert checkboxes Water, Wind
+        difElementPage.setNatureElement(WATER, WIND);
+
+        //9. Select radio
+        difElementPage.selectMetal(SELEN);
+
+        //10. Select in dropdown Yellow
+        difElementPage.selectColor(YELLOW);
+        //11. Check in logs section selected values and status
+
 //        difElementPage.selectMetal(GOLD);
 //        difElementPage.selectMetal(SILVER);
     }
