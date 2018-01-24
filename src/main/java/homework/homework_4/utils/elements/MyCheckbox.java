@@ -13,8 +13,9 @@ public class MyCheckbox implements ISelenideElement, IShouldBeVisible {
     private SelenideElement element;
 
     public void check() {
-        if (!isChecked())
+        if (!isChecked()) {
             element.click();
+        }
     }
 
     public void unCheck() {
