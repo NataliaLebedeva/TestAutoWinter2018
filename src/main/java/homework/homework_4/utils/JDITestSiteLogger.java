@@ -22,11 +22,13 @@ public final class JDITestSiteLogger {
     private static final String CONDITION = "%s: condition changed to %s";
     private static final String METAL_CHANGED = "metal: value changed to %s";
     private static final String COLOR_CHANGED = "Colors: value changed to %s";
+    private static final String RANGE_2 = "Range 2(%s):%s link clicked";
 
     private static HashMap<Class, BiFunction<String, String, String>> map = new HashMap<Class, BiFunction<String, String, String>>() {{
         put(NatureElements.class, (name, status) -> format(CONDITION, name, status));
         put(Colors.class, (name, status) -> format(COLOR_CHANGED, name));
         put(Metals.class, (name, status) -> format(METAL_CHANGED, name));
+       // put(Marker.class,(name, amount) -> format(RANGE_2, name, amount));
     }};
 
     public static void Add(Object c) {

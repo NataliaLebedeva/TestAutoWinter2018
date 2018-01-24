@@ -20,68 +20,68 @@ public class CommonPage {
     }
 
     @FindBy(css = "header a[href='index.htm']")
-    public SelenideElement home;
+    private SelenideElement home;
 
     //as xPath :  "//a[text()='Contact form']"
     @FindBy(css = "header li:not(.dropdown) a[href='page1.htm']")
-    public SelenideElement contactForm;
+    private SelenideElement contactForm;
 
     @FindBy(css = "header [class*='dropdown'] a[href='page1.htm']")
-    public SelenideElement service;
+    private SelenideElement service;
 
     // SERVICES
     @FindBy(css = "header a[href='page3.htm']")
-    public SelenideElement support;
+    private SelenideElement support;
 
     @FindBy(css = "header a[href='page4.htm']")
-    public SelenideElement dates;
+    private SelenideElement dates;
 
     @FindBy(css = "header a[href='page5.htm']")
-    public SelenideElement completxTable;
+    private SelenideElement completxTable;
 
     @FindBy(css = "header a[href='page6.htm']")
-    public SelenideElement simpleTable;
+    private SelenideElement simpleTable;
 
     @FindBy(css = "header a[href='page7.htm']")
-    public SelenideElement tablePages;
+    private SelenideElement tablePages;
 
     @FindBy(css = "header a[href='page8.htm']")
-    public SelenideElement differentElements;
+    private SelenideElement differentElements;
 
     @FindBy(css = "header a[href='page2.htm']")
-    public SelenideElement metalsColors;
+    private SelenideElement metalsColors;
 
     @FindBy(css = ".sidebar-menu a[href='index.htm']")
-    public SelenideElement sideHome;
+    private SelenideElement sideHome;
 
     @FindBy(css = ".sidebar-menu a[href='page1.htm']")
-    public SelenideElement sideContactForm;
+    private SelenideElement sideContactForm;
 
     //@FindBy(css = ".sidebar-menu [class='sub-menu']")
     @FindBy(css = "[class='sub-menu'] a[href='page1.htm']")
-    public SelenideElement sideService;
+    private SelenideElement sideService;
 
     @FindBy(css = ".sidebar-menu a[href='page2.htm']")
-    public SelenideElement sideMetalsColors;
+    private SelenideElement sideMetalsColors;
 
     //servises on side bar
     @FindBy(css = ".sidebar-menu a[href='page3.htm']")
-    public SelenideElement sideSupport;
+    private SelenideElement sideSupport;
 
     @FindBy(css = ".sidebar-menu a[href='page4.htm']")
-    public SelenideElement sideDates;
+    private SelenideElement sideDates;
 
     @FindBy(css = ".sidebar-menu a[href='page5.htm']")
-    public SelenideElement sideComplexTable;
+    private SelenideElement sideComplexTable;
 
     @FindBy(css = ".sidebar-menu a[href='page6.htm']")
-    public SelenideElement sideSimpleTable;
+    private SelenideElement sideSimpleTable;
 
     @FindBy(css = ".sidebar-menu a[href='page7.htm']")
-    public SelenideElement sideTablePages;
+    private SelenideElement sideTablePages;
 
     @FindBy(css = ".sidebar-menu a[href='page8.htm']")
-    public SelenideElement sideDifferentElements;
+    private SelenideElement sideDifferentElements;
 
     static private HashMap<JDI_SITE_PAGES, Consumer<CommonPage>> headerActions =
             new HashMap<JDI_SITE_PAGES, Consumer<CommonPage>>() {{

@@ -14,7 +14,7 @@ public class annotationsTest {
 
     @BeforeSuite
     public void beforeSuite() {
-        setProperty("webdriver.chrome.driver", "C:/Program Files (x86)/Google/Chrome/Driver/chromedriver.exe");
+        setProperty("webdriver.chrome.driver", "chromedriver.exe");
     }
 
     @AfterSuite
