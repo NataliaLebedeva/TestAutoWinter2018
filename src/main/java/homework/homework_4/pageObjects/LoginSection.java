@@ -37,7 +37,6 @@ public class LoginSection {
         if (!logoutButton.isDisplayed())
             profileInfo.click();
         logoutButton.click();
-        dropdownProfileMenu.click();
     }
 
     public void checkUserInfo(User user) {

@@ -4,6 +4,8 @@ import com.google.common.collect.Lists;
 import homework.homework_4.enums.Colors;
 import homework.homework_4.enums.Metals;
 import homework.homework_4.enums.NatureElements;
+import homework.homework_4.utils.elements.RangeSlider;
+import homework.homework_4.utils.elements.RangeSlider.RANGE_ACTIONS;
 import lombok.val;
 
 import java.util.ArrayList;
@@ -28,14 +30,14 @@ public final class JDITestSiteLogger {
         put(NatureElements.class, (name, status) -> format(CONDITION, name, status));
         put(Colors.class, (name, status) -> format(COLOR_CHANGED, name));
         put(Metals.class, (name, status) -> format(METAL_CHANGED, name));
-       // put(Marker.class,(name, amount) -> format(RANGE_2, name, amount));
+        put(RANGE_ACTIONS.class, (name, amount) -> format(RANGE_2, name, amount));
     }};
 
     public static void Add(Object c) {
         DATA.add(map.get(c.getClass()).apply(c.toString(), null));
     }
 
-    public static void Add(Object o, Boolean status) {
+    public static void Add(Object o, Object status) {
         DATA.add(map.get(o.getClass()).apply(o.toString(), status.toString()));
     }
 
@@ -60,5 +62,16 @@ public final class JDITestSiteLogger {
                 .replaceAll(" ", "");
 
         assertEquals(expected, actualLog, format("ACTUAL:\n%s\nEXPECTED:\n%s", actual, DATA.stream().collect(joining("\n"))));
+    }
+
+
+    public static void CheckCount(String actual) {
+
+        assertEquals(DATA.size(), actual.split("\n").length);
+    }
+
+    public static void CleanLog() {
+        DATA.clear();
+
     }
 }

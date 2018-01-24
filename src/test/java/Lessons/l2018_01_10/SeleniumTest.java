@@ -42,7 +42,7 @@ public class SeleniumTest {
     }
 
 //    @Test(dependsOnMethods = "test1")
-//    public void test2() {
+//    public void dragNdropTest() {
 //        WebDriver driver = new FirefoxDriver();
 //        driver.navigate().to("https://www.epam.com/");
 //        driver.close();

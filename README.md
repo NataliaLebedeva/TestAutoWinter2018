@@ -11,3 +11,6 @@
 
 ## Home work 3
 `mvn test -P hw3`
+
+## Home work 4
+`mvn test -P hw4`

@@ -1,5 +1,6 @@
 package homework.homework_4;
 
+import homework.homework_4.utils.JDITestSiteLogger;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeMethod;
@@ -16,16 +17,19 @@ public class SelenideBase {
 
     @BeforeMethod
     public void beforeMethod() {
-        //1. perform login before every method
+        // 4. Open site by URL
+        open("https://jdi-framework.github.io/tests/index.htm");
+        // 5. perform login before every method
         loginForm.login(PITER_CHAILOVSKII);
-        //2. check user info
+        // 6. check user info
         loginForm.checkUserInfo(PITER_CHAILOVSKII);
     }
 
     @AfterMethod
     public void afterMethod() {
-        //logout after method
+        //logout after every  test-method
         loginForm.logout();
+        JDITestSiteLogger.CleanLog();
     }
 
     @BeforeSuite
@@ -38,8 +42,6 @@ public class SelenideBase {
         collectionsPollingInterval = 300;
 
         init();
-        //open site by URL
-        open("https://jdi-framework.github.io/tests/index.htm");
     }
 
     @AfterSuite

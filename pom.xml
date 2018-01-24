@@ -126,6 +126,12 @@
                 <runner>homeWork3.xml</runner>
             </properties>
         </profile>
+        <profile>
+            <id>hw4</id>
+            <properties>
+                <runner>homeWork4.xml</runner>
+            </properties>
+        </profile>
     </profiles>
 
 </project>
