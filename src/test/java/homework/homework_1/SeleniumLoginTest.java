@@ -36,6 +36,10 @@ public class SeleniumLoginTest extends TestBase {
     @Test
     public void loginTest() {
 
+        //2. open url
+
+        GetDriver().get("https://jdi-framework.github.io/tests/index.htm");
+
         //3. Assert Browser title
         WebDriverWait wait = new WebDriverWait(GetDriver(), 10);
         wait.until(ExpectedConditions.titleIs(TITLE));
@@ -68,5 +72,7 @@ public class SeleniumLoginTest extends TestBase {
         //9. Assert that there are the main header and the text below it on the Home Page
         assertEquals(MAIN_TEXT, GetDriver().findElement(By.cssSelector(".main-txt")).getText());
         assertEquals(MAIN_TITLE, GetDriver().findElement(By.cssSelector(".main-title")).getText());
+
+        GetDriver().close();
     }
 }
