@@ -10,6 +10,8 @@ import org.testng.annotations.Test;
 import java.util.ArrayList;
 import java.util.List;
 
+import static org.testng.Assert.*;
+
 public class SeleniumLoginTest extends TestBase {
     private final String TITLE = "Index Page";
     private final String USERNAME = "Piter Chailovskii";
@@ -41,30 +43,25 @@ public class SeleniumLoginTest extends TestBase {
 
         //5. Assert User name in the left-top side of screen that user is loggined
         WebElement profileInfo = driver.findElement(By.cssSelector(".profile-photo span"));
-        Assert.assertTrue(USERNAME.equalsIgnoreCase(profileInfo.getText()));
+        assertTrue(USERNAME.equalsIgnoreCase(profileInfo.getText()));
 
         //6. Assert Browser title
         wait.until(ExpectedConditions.titleIs(TITLE));
 
         //7. Assert that there are 4 images on the Home Page and they are displayed
         List<WebElement> images = driver.findElements(By.cssSelector(".benefit-icon span"));
-        Assert.assertEquals(images.size(), 4);
+        assertEquals(images.size(), 4);
         for (WebElement img : images) {
-            Assert.assertTrue(img.isDisplayed());
+            assertTrue(img.isDisplayed());
         }
 
         //8. Assert that there are 4 texts on the Home Page and check them by getting texts
         List<WebElement> textBelowImg = driver.findElements(By.cssSelector(".benefit-txt"));
-        Assert.assertEquals(textBelowImg.size(), 4);
-        for(int i = 0; i < texts.size(); i++) {
-            Assert.assertEquals(textBelowImg.get(i).getText().replaceAll("\n", " "), texts.get(i));
-//            assertContains(texts.contains(element.getText()));
-        }
+        assertEquals(textBelowImg.size(), 4);
+        textBelowImg.forEach(element -> assertTrue(texts.contains(element.getText().replaceAll("\n", " "))));
 
         //9. Assert that there are the main header and the text below it on the Home Page
-        Assert.assertEquals(MAIN_TEXT, driver.findElement(By.cssSelector(".main-txt")).getText());
-        Assert.assertEquals(MAIN_TITLE, driver.findElement(By.cssSelector(".main-title")).getText());
-
-
+        assertEquals(MAIN_TEXT, driver.findElement(By.cssSelector(".main-txt")).getText());
+        assertEquals(MAIN_TITLE, driver.findElement(By.cssSelector(".main-title")).getText());
     }
 }
