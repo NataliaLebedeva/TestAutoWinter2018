@@ -14,24 +14,6 @@ import static homework.homework_4.JDISite.loginForm;
 import static homework.homework_4.entities.User.PITER_CHAILOVSKII;
 
 public class SelenideBase {
-
-    @BeforeMethod
-    public void beforeMethod() {
-        // 4. Open site by URL
-        open("https://jdi-framework.github.io/tests/index.htm");
-        // 5. perform login before every method
-        loginForm.login(PITER_CHAILOVSKII);
-        // 6. check user info
-        loginForm.checkUserInfo(PITER_CHAILOVSKII);
-    }
-
-    @AfterMethod
-    public void afterMethod() {
-        //logout after every  test-method
-        loginForm.logout();
-        JDITestSiteLogger.CleanLog();
-    }
-
     @BeforeSuite
     public void beforeSuite() {
         browser = "chrome";

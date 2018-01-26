@@ -23,8 +23,9 @@ public class DatesPage {
     );
 
     public void setRangeSlider(int left, int right) {
-        rangeSlider.setRange(left, right);
+            rangeSlider.setRange(left, right);
     }
+
 
     public void checkLog() {
         JDITestSiteLogger.Check(logs.getText());

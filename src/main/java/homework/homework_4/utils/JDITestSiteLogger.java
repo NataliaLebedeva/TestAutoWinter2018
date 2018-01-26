@@ -66,7 +66,6 @@ public final class JDITestSiteLogger {
 
 
     public static void CheckCount(String actual) {
-
         assertEquals(DATA.size(), actual.split("\n").length);
     }
 

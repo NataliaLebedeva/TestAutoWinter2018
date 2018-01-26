@@ -1,8 +1,12 @@
 package homework.homework_4;
 
+import homework.homework_4.utils.JDITestSiteLogger;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 
+import static com.codeborne.selenide.Selenide.open;
 import static homework.homework_4.JDISite.*;
+import static homework.homework_4.entities.User.PITER_CHAILOVSKII;
 import static homework.homework_4.enums.Colors.YELLOW;
 import static homework.homework_4.enums.Metals.SELEN;
 import static homework.homework_4.enums.NatureElements.WATER;
@@ -16,6 +20,12 @@ public class JDISiteDifferentElementsPageTest extends SelenideBase {
 
     @Test
     public void differentElementsTest() {
+        // 4. Open site by URL
+        open("https://jdi-framework.github.io/tests/index.htm");
+        // 5. perform login before every method
+        loginForm.login(PITER_CHAILOVSKII);
+        // 6. check user info
+        loginForm.checkUserInfo(PITER_CHAILOVSKII);
 
         // 7. check interface of the home page
         homePage.checkPageTitle();
@@ -54,6 +64,13 @@ public class JDISiteDifferentElementsPageTest extends SelenideBase {
 
         // 17. Check in logs section unselected values and status
         difElementPage.checkLog();
+
+        //logout after every  test-method
+        loginForm.logout();
     }
 
+    @AfterMethod
+    public void afterMethod() {
+        JDITestSiteLogger.CleanLog();
+    }
 }
