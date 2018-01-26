@@ -4,12 +4,31 @@ import homework.TestBase;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
+import static homework.DriverFactory.GetDriver;
+
 public class RegressTest extends TestBase {
     private static final String USERNAME = "Piter Chailovskii";
+
+    private WebDriverWait wait;
+
+    @BeforeClass(alwaysRun = true)
+    public void beforeClass() {
+        GetDriver().get("https://jdi-framework.github.io/tests/index.htm");
+        wait = new WebDriverWait(GetDriver(), 10);
+    }
+
+    @AfterClass(alwaysRun = true)
+    public void afterClass() {
+        //10. Close Browser
+        GetDriver().close();
+    }
 
     @DataProvider
     public Object[][] data() {
@@ -35,11 +54,11 @@ public class RegressTest extends TestBase {
 
     @Test(groups = "regression")
     public void loginTest() {
-        driver.findElement(By.cssSelector(".uui-profile-menu")).click();
-        driver.findElement(By.id("Login")).sendKeys("epam");
-        driver.findElement(By.id("Password")).sendKeys("1234");
-        driver.findElement(By.cssSelector(".uui-button")).click();
-        WebElement profileInfo = driver.findElement(By.cssSelector(".profile-photo span"));
+        GetDriver().findElement(By.cssSelector(".uui-profile-menu")).click();
+        GetDriver().findElement(By.id("Login")).sendKeys("epam");
+        GetDriver().findElement(By.id("Password")).sendKeys("1234");
+        GetDriver().findElement(By.cssSelector(".uui-button")).click();
+        WebElement profileInfo = GetDriver().findElement(By.cssSelector(".profile-photo span"));
         Assert.assertTrue(USERNAME.equalsIgnoreCase(profileInfo.getText()));
     }
 }

@@ -1,29 +1,14 @@
 package homework;
 
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeSuite;
 
-import java.util.concurrent.TimeUnit;
+import static java.lang.System.setProperty;
 
 public class TestBase {
-    protected WebDriver driver;
-    protected WebDriverWait wait;
 
-    @BeforeClass(alwaysRun = true)
-    public void beforeClass() {
-        driver = new ChromeDriver();
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        driver.manage().window().maximize();
-        driver.get("https://jdi-framework.github.io/tests/index.htm");
-        wait = new WebDriverWait(driver, 10);
+    @BeforeSuite
+    public void beforeSuite() {
+        setProperty("webdriver.chrome.driver", "chromedriver.exe");;
     }
 
-    @AfterClass(alwaysRun = true)
-    public void afterClass() {
-        //10. Close Browser
-        driver.close();
-    }
 }

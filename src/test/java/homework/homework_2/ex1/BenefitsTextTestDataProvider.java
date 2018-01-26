@@ -13,7 +13,7 @@ import java.util.concurrent.TimeUnit;
 
 import static org.testng.Assert.*;
 
-public class TextDPTest {
+public class BenefitsTextTestDataProvider {
     private WebDriver driver;
 
     @BeforeTest
@@ -43,8 +43,12 @@ public class TextDPTest {
 
     @Test(dataProvider = "textBelowPics")
     public void textBelowPicTest(String locator, String content) {
-        assertEquals(driver.findElement(By.xpath(String.format("//span[contains(@class,'%s')]/../../span",
-                locator))).getText().replaceAll("\n", " "), content);
+        // From my point of view, this approach will be better couse we check that
+        // certain block has appropriate text instead of one of the several blocks have a text
+        assertEquals(
+                driver.findElement(By.xpath(String.format("//span[contains(@class,'%s')]/../../span",locator)))
+                        .getText().replaceAll("\n", " "),
+                content);
     }
 
 }

@@ -17,31 +17,16 @@ public class annotationsTest {
         setProperty("webdriver.chrome.driver", "chromedriver.exe");
     }
 
-    @AfterSuite
-    public void afterSuite() {
-        if (driver.toString().contains("null")) {
-            driver.quit();
-        }
-    }
 
     @BeforeTest
     public void beforeTest() {
         driver = new ChromeDriver();
     }
 
-    @AfterTest
-    public void afterTest() {
-        driver.close();
-    }
 
     @BeforeClass
     public void beforeClass() {
-        driver.get("https://www.epam.com/");
-    }
-
-    @AfterClass
-    public void afterClass() {
-        System.out.println(System.currentTimeMillis());
+        driver.get("http://epam.com");
     }
 
     @BeforeMethod
@@ -51,12 +36,31 @@ public class annotationsTest {
 
     @AfterMethod
     public void afterMethod() {
-        new WebDriverWait(driver, 2);
+        System.out.println(System.currentTimeMillis());
     }
+
+    @AfterClass
+    public void afterClass() {
+        System.out.println("afterClass");
+    }
+
+    @AfterTest
+    public void afterTest() {
+        driver.close();
+    }
+
+    @AfterSuite
+    public void afterSuite() {
+        if (!driver.toString().contains("null")) {
+            driver.quit();
+        }
+    }
+
+    ////////////////////////////////
 
     @Test
     public void firstTest() {
-        Assert.assertEquals(driver.findElement(By.cssSelector(".hamburger-menu__button")).getText(), "MENU");
+        Assert.assertTrue(true);
     }
 }
 

@@ -4,11 +4,16 @@ import homework.TestBase;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import java.util.List;
+
+import static homework.DriverFactory.GetDriver;
 
 public class SmokeRegressTest extends TestBase {
 
@@ -19,6 +24,7 @@ public class SmokeRegressTest extends TestBase {
             "ALIQUA. UT ENIM AD MINIM VENIAM, QUIS NOSTRUD EXERCITATION ULLAMCO LABORIS NISI UT ALIQUIP " +
             "EX EA COMMODO CONSEQUAT DUIS AUTE IRURE DOLOR IN REPREHENDERIT IN VOLUPTATE VELIT ESSE " +
             "CILLUM DOLORE EU FUGIAT NULLA PARIATUR.";
+    private WebDriverWait wait;
 
     @DataProvider
     public Object[][] data() {
@@ -36,6 +42,18 @@ public class SmokeRegressTest extends TestBase {
         };
     }
 
+    @BeforeClass(alwaysRun = true)
+    public void beforeClass() {
+        GetDriver().get("https://jdi-framework.github.io/tests/index.htm");
+        wait = new WebDriverWait(GetDriver(), 10);
+    }
+
+    @AfterClass(alwaysRun = true)
+    public void afterClass() {
+        //10. Close Browser
+        GetDriver().close();
+    }
+
     @Test(dataProvider = "data", groups = "regression")
     public void firstTest(String title, String content) {
         String commonLocator = "//span[contains(@class,'%s')]/../../span";
@@ -44,37 +62,37 @@ public class SmokeRegressTest extends TestBase {
 
     @Test(groups = "regression")
     public void secondTest() {
-        driver.findElement(By.cssSelector(".uui-profile-menu")).click();
-        driver.findElement(By.id("Login")).sendKeys("epam");
-        driver.findElement(By.id("Password")).sendKeys("1234");
-        driver.findElement(By.cssSelector(".uui-button")).click();
-        WebElement profileInfo = driver.findElement(By.cssSelector(".profile-photo span"));
+        GetDriver().findElement(By.cssSelector(".uui-profile-menu")).click();
+        GetDriver().findElement(By.id("Login")).sendKeys("epam");
+        GetDriver().findElement(By.id("Password")).sendKeys("1234");
+        GetDriver().findElement(By.cssSelector(".uui-button")).click();
+        WebElement profileInfo = GetDriver().findElement(By.cssSelector(".profile-photo span"));
         Assert.assertTrue(USERNAME.equalsIgnoreCase(profileInfo.getText()));
-        driver.findElement(By.className("fa-sign-out")).click();
+        GetDriver().findElement(By.className("fa-sign-out")).click();
     }
 
     @Test(groups = "smoke")
     public void thirdTest() {
-        List<WebElement> images = driver.findElements(By.cssSelector(".benefit-icon span"));
+        List<WebElement> images = GetDriver().findElements(By.cssSelector(".benefit-icon span"));
         Assert.assertEquals(images.size(), 4);
         for (WebElement img : images) {
             Assert.assertTrue(img.isDisplayed());
         }
 
-        WebElement actualMainTitle = driver.findElement(By.cssSelector(".main-txt"));
+        WebElement actualMainTitle = GetDriver().findElement(By.cssSelector(".main-txt"));
         Assert.assertEquals(MAIN_TEXT, actualMainTitle.getText());
-        WebElement actualMainTxt = driver.findElement(By.cssSelector(".main-title"));
+        WebElement actualMainTxt = GetDriver().findElement(By.cssSelector(".main-title"));
         Assert.assertEquals(MAIN_TITLE, actualMainTxt.getText());
     }
 
     @Test(groups = "smoke")
     public void fourthTest() {
 
-        driver.findElement(By.cssSelector(".uui-profile-menu")).click();
-        driver.findElement(By.id("Login")).sendKeys("epam");
-        driver.findElement(By.id("Password")).sendKeys("0000");
-        driver.findElement(By.cssSelector(".uui-button")).click();
-        WebElement profileInfo = driver.findElement(By.cssSelector(".login-txt"));
+        GetDriver().findElement(By.cssSelector(".uui-profile-menu")).click();
+        GetDriver().findElement(By.id("Login")).sendKeys("epam");
+        GetDriver().findElement(By.id("Password")).sendKeys("0000");
+        GetDriver().findElement(By.cssSelector(".uui-button")).click();
+        WebElement profileInfo = GetDriver().findElement(By.cssSelector(".login-txt"));
         Assert.assertEquals(profileInfo.getText(), "* Login Faild");
     }
 

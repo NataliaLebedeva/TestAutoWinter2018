@@ -1,15 +1,19 @@
 package homework.homework_1;
 
+import homework.DriverFactory;
 import homework.TestBase;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
 
+import static homework.DriverFactory.*;
 import static org.testng.Assert.*;
 
 public class SeleniumLoginTest extends TestBase {
@@ -33,35 +37,36 @@ public class SeleniumLoginTest extends TestBase {
     public void loginTest() {
 
         //3. Assert Browser title
+        WebDriverWait wait = new WebDriverWait(GetDriver(), 10);
         wait.until(ExpectedConditions.titleIs(TITLE));
 
         //4. Perform login
-        driver.findElement(By.cssSelector(".uui-profile-menu")).click();
-        driver.findElement(By.id("Login")).sendKeys("epam");
-        driver.findElement(By.id("Password")).sendKeys("1234");
-        driver.findElement(By.cssSelector(".uui-button")).click();
+        GetDriver().findElement(By.cssSelector(".uui-profile-menu")).click();
+        GetDriver().findElement(By.id("Login")).sendKeys("epam");
+        GetDriver().findElement(By.id("Password")).sendKeys("1234");
+        GetDriver().findElement(By.cssSelector(".uui-button")).click();
 
         //5. Assert User name in the left-top side of screen that user is loggined
-        WebElement profileInfo = driver.findElement(By.cssSelector(".profile-photo span"));
+        WebElement profileInfo = GetDriver().findElement(By.cssSelector(".profile-photo span"));
         assertTrue(USERNAME.equalsIgnoreCase(profileInfo.getText()));
 
         //6. Assert Browser title
         wait.until(ExpectedConditions.titleIs(TITLE));
 
         //7. Assert that there are 4 images on the Home Page and they are displayed
-        List<WebElement> images = driver.findElements(By.cssSelector(".benefit-icon span"));
+        List<WebElement> images = GetDriver().findElements(By.cssSelector(".benefit-icon span"));
         assertEquals(images.size(), 4);
         for (WebElement img : images) {
             assertTrue(img.isDisplayed());
         }
 
         //8. Assert that there are 4 texts on the Home Page and check them by getting texts
-        List<WebElement> textBelowImg = driver.findElements(By.cssSelector(".benefit-txt"));
+        List<WebElement> textBelowImg = GetDriver().findElements(By.cssSelector(".benefit-txt"));
         assertEquals(textBelowImg.size(), 4);
         textBelowImg.forEach(element -> assertTrue(texts.contains(element.getText().replaceAll("\n", " "))));
 
         //9. Assert that there are the main header and the text below it on the Home Page
-        assertEquals(MAIN_TEXT, driver.findElement(By.cssSelector(".main-txt")).getText());
-        assertEquals(MAIN_TITLE, driver.findElement(By.cssSelector(".main-title")).getText());
+        assertEquals(MAIN_TEXT, GetDriver().findElement(By.cssSelector(".main-txt")).getText());
+        assertEquals(MAIN_TITLE, GetDriver().findElement(By.cssSelector(".main-title")).getText());
     }
 }
