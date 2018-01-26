@@ -1,16 +1,20 @@
 package homework.homework_3.pageObjects;
 
+import homework.TestBase;
 import homework.homework_3.entities.User;
-import homework.homework_3.enums.IndexPageTextEnum;
+import homework.homework_3.enums.Benefits;
 import homework.homework_3.enums.MainTextEnum;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.testng.Assert;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
+import static homework.DriverFactory.*;
+import static homework.TestBase.*;
+import static homework.homework_3.enums.MainTextEnum.*;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
@@ -32,7 +36,7 @@ public class IndexPageObject extends Page {
     private WebElement profileInfo;
 
     @FindBy(css = ".benefit-txt")
-    private List<WebElement> benefitTxt;
+    private List<WebElement> benefitText;
 
     @FindBy(css = ".benefit-icon")
     private List<WebElement> benefitIcon;
@@ -43,14 +47,9 @@ public class IndexPageObject extends Page {
     @FindBy(css = ".main-title")
     private WebElement mainTitle;
 
-
-    public IndexPageObject(WebDriver driver) {
-        super(driver);
-    }
-
     public void open() {
         //2. Open index page
-        driver.get("https://jdi-framework.github.io/tests/index.htm");
+        GetDriver().get("https://jdi-framework.github.io/tests/index.htm");
         //3. Assert Browser title
         wait.until(ExpectedConditions.titleIs("Index Page"));
     }
@@ -67,21 +66,22 @@ public class IndexPageObject extends Page {
     }
 
     public void checkBenefitIcons() {
+        Assert.assertEquals(benefitIcon.size(), Benefits.values().length);
         for (WebElement e : benefitIcon) {
             assertTrue(e.isDisplayed());
         }
     }
 
     public void checkBenefitsTexts() {
-        IndexPageTextEnum[] values = IndexPageTextEnum.values();
-        for (int i = 0; i < values.length; i++) {
-            assertEquals(benefitTxt.get(i).getText().replaceAll("\n", " "), values[i].getText());
-        }
+        List<String> actual = benefitText.stream()
+                .map(WebElement::getText)
+                .map(REPLACE_NEW_LINE)
+                .collect(Collectors.toList());
+        Assert.assertEquals(actual, Benefits.AsList());
     }
 
     public void checkMainText() {
-        MainTextEnum[] values = MainTextEnum.values();
-        assertEquals(mainTitle.getText(), values[0].getText());
-        assertEquals(mainText.getText(), values[1].getText());
+        assertEquals(mainTitle.getText(), MAIN_TITLE.getText());
+        assertEquals(mainText.getText(), MAIN_TEXT.getText());
     }
 }
