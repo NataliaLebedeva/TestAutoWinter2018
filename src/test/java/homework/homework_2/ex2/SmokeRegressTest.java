@@ -51,7 +51,7 @@ public class SmokeRegressTest extends TestBase {
     @AfterClass(alwaysRun = true)
     public void afterClass() {
         //10. Close Browser
-        GetDriver().close();
+//        GetDriver().close();
     }
 
     @Test(dataProvider = "data", groups = "regression")

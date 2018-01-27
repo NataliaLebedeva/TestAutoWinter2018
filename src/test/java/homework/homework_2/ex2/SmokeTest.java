@@ -32,7 +32,7 @@ public class SmokeTest extends TestBase {
     @AfterClass(alwaysRun = true)
     public void afterClass() {
         //10. Close Browser
-        GetDriver().close();
+//        GetDriver().close();
     }
 
     @Test(groups = "smoke")

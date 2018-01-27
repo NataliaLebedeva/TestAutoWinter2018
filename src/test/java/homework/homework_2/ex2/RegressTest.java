@@ -27,7 +27,7 @@ public class RegressTest extends TestBase {
     @AfterClass()
     public void afterClass() {
         //10. Close Browser
-        GetDriver().close();
+//        GetDriver().close();
     }
 
     @DataProvider

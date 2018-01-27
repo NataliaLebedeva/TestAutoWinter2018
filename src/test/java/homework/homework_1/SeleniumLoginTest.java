@@ -1,28 +1,26 @@
 package homework.homework_1;
 
-import homework.DriverFactory;
 import homework.TestBase;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
 
-import static homework.DriverFactory.*;
-import static org.testng.Assert.*;
+import static homework.DriverFactory.GetDriver;
+import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertTrue;
 
 public class SeleniumLoginTest extends TestBase {
     private final String TITLE = "Index Page";
-    private final String USERNAME = "Piter Chailovskii";
+    private final String USERNAME = "Danila Morokov";
     private final String MAIN_TITLE = "EPAM FRAMEWORK WISHES\u2026";
     private final String MAIN_TEXT = "LOREM IPSUM DOLOR SIT AMET, " +
             "CONSECTETUR ADIPISICING ELIT, SED DO EIUSMOD TEMPOR INCIDIDUNT UT LABORE ET DOLORE MAGNA " +
-//            "ALIQUA. UT ENIM AD MINIM VENIAM, QUIS NOSTRUD EXERCITATION ULLAMCO LABORIS NISI UT ALIQUIP " +
+            "ALIQUA. UT ENIM AD MINIM VENIAM, QUIS NOSTRUD EXERCITATION ULLAMCO LABORIS NISI UT ALIQUIP " +
             "EX EA COMMODO CONSEQUAT DUIS AUTE IRURE DOLOR IN REPREHENDERIT IN VOLUPTATE VELIT ESSE " +
             "CILLUM DOLORE EU FUGIAT NULLA PARIATUR.";
 
