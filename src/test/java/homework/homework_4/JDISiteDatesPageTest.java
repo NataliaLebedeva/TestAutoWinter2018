@@ -16,7 +16,7 @@ import static homework.homework_4.pageObjects.CommonPage.MENU_TYPE.HEADER;
 
 @Listeners(AllureAttachmentListener.class)
 @Features({"Selenide Test Suite"})
-@Stories({"Login tests"})
+@Stories({"Login and drag'n'drop tests"})
 public class JDISiteDatesPageTest extends SelenideBase {
 
     @Test

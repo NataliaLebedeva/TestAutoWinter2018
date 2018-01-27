@@ -11,6 +11,7 @@ import homework.homework_4.utils.elements.MetalsRadioButtonGroup;
 import homework.homework_4.utils.elements.NatureElementsCheckbox;
 import lombok.val;
 import org.openqa.selenium.support.FindBy;
+import ru.yandex.qatools.allure.annotations.Step;
 
 import java.util.stream.Stream;
 
@@ -40,31 +41,37 @@ public class DifferentElementsPage {
     @FindBy(xpath = "//ul[contains(@class, 'results')]")
     private SelenideElement results;
 
+    @Step
     public void checkInterface() {
         Stream.of(natureElementsCheckbox, metals, colorsDropdown).forEach(IShouldBeVisible::shouldBeVisible);
         Stream.of(defaultButton, button, logs, results).forEach(se -> se.shouldBe(visible));
     }
 
+    @Step
     public void setNatureElement(NatureElements... elements) {
         for (val element : elements) {
             natureElementsCheckbox.check(element);
         }
     }
 
+    @Step
     public void unsetNatureElement(NatureElements... elements) {
         for (val element : elements) {
             natureElementsCheckbox.unCheck(element);
         }
     }
 
+    @Step
     public void selectMetal(Metals metal) {
         metals.check(metal);
     }
 
+    @Step
     public void selectColor(Colors color) {
         colorsDropdown.select(color);
     }
 
+    @Step
     public void checkLog() {
         JDITestSiteLogger.Check(logs.getText());
     }

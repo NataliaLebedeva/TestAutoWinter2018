@@ -2,6 +2,7 @@ package homework.homework_4.pageObjects;
 
 import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.support.FindBy;
+import ru.yandex.qatools.allure.annotations.Step;
 
 import java.util.HashMap;
 import java.util.function.Consumer;
@@ -147,6 +148,7 @@ public class CommonPage {
                 });
             }};
 
+    @Step
     public void openPage(MENU_TYPE menuType, JDI_SITE_PAGES page) {
         HashMap<JDI_SITE_PAGES, Consumer<CommonPage>> map = null;
         switch (menuType) {
@@ -160,6 +162,7 @@ public class CommonPage {
         map.get(page).accept(this);
     }
 
+    @Step
     public void checkSubMenu(MENU_TYPE type) {
         Stream<SelenideElement> elements = null;
         switch (type) {

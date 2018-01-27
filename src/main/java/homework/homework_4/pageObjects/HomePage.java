@@ -7,6 +7,7 @@ import homework.homework_4.enums.BenefitsTextEnum;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.testng.Assert;
+import ru.yandex.qatools.allure.annotations.Step;
 
 import java.util.Arrays;
 import java.util.List;
@@ -33,16 +34,19 @@ public class HomePage {
     @FindBy(css = ".main-title")
     private SelenideElement mainTitle;
 
+    @Step
     public void checkPageTitle() {
         Assert.assertTrue(title().equals(PAGE_TITLE.getText()));
     }
 
+    @Step
     public void checkBenefitsIcon() {
         benefitIcon.shouldHave(size(4));
         for (SelenideElement icon : benefitIcon) {
             icon.shouldBe(visible);
         }
     }
+
 
     public void checkBenefitsTextsSelenide() {
         BenefitsTextEnum[] values = BenefitsTextEnum.values();
@@ -59,7 +63,8 @@ public class HomePage {
         }
     }
 
-    public void checkBenefitsTextsStream() {
+    @Step
+    public void checkBenefitsTextsByStream() {
         Function<String, String> replace = (s) -> s.replaceAll("\n", " ").toLowerCase().trim();
 
         List<String> expected = Arrays.stream(BenefitsTextEnum.values())
@@ -72,6 +77,7 @@ public class HomePage {
         Assert.assertEquals(actual, expected);
     }
 
+    @Step
     public void checkMainText() {
         mainTitle.shouldHave(text(MAIN_TITLE.getText()));
         mainText.shouldHave(text(MAIN_TEXT.getText()));

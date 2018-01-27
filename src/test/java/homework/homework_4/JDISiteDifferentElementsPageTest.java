@@ -22,7 +22,7 @@ import static homework.homework_4.pageObjects.CommonPage.MENU_TYPE.SIDE_BAR;
 
 @Listeners(AllureAttachmentListener.class)
 @Features({"Selenide Test Suite"})
-@Stories({"Login tests"})
+@Stories({"Login and Different elements tests"})
 public class JDISiteDifferentElementsPageTest extends SelenideBase {
 
     @Test
@@ -36,7 +36,7 @@ public class JDISiteDifferentElementsPageTest extends SelenideBase {
 
         // 7. check interface of the home page
         homePage.checkPageTitle();
-        homePage.checkBenefitsTextsStream();
+        homePage.checkBenefitsTextsByStream();
         homePage.checkBenefitsIcon();
         homePage.checkMainText();
 
