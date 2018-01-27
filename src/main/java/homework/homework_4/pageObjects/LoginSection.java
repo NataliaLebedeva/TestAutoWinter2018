@@ -3,6 +3,7 @@ package homework.homework_4.pageObjects;
 import com.codeborne.selenide.SelenideElement;
 import homework.homework_4.entities.User;
 import org.openqa.selenium.support.FindBy;
+import ru.yandex.qatools.allure.annotations.Step;
 
 import static com.codeborne.selenide.Condition.text;
 
@@ -26,6 +27,7 @@ public class LoginSection {
     @FindBy(css = ".logout")
     private SelenideElement logoutButton;
 
+    @Step("Login as user")
     public void login(User user) {
         dropdownProfileMenu.click();
         userLogin.sendKeys(user.getLogin());
@@ -33,12 +35,14 @@ public class LoginSection {
         submitButton.click();
     }
 
+    @Step
     public void logout() {
         if (!logoutButton.isDisplayed())
             profileInfo.click();
         logoutButton.click();
     }
 
+    @Step
     public void checkUserInfo(User user) {
         profileInfo.shouldHave(text(user.getUserName()));
     }

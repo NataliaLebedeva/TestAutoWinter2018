@@ -1,8 +1,12 @@
 package homework.homework_4;
 
+import homework.homework_4.utils.AllureAttachmentListener;
 import homework.homework_4.utils.JDITestSiteLogger;
 import org.testng.annotations.AfterMethod;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
+import ru.yandex.qatools.allure.annotations.Features;
+import ru.yandex.qatools.allure.annotations.Stories;
 
 import static com.codeborne.selenide.Selenide.open;
 import static homework.homework_4.JDISite.*;
@@ -16,6 +20,9 @@ import static homework.homework_4.pageObjects.CommonPage.JDI_SITE_PAGES.SERVICE;
 import static homework.homework_4.pageObjects.CommonPage.MENU_TYPE.HEADER;
 import static homework.homework_4.pageObjects.CommonPage.MENU_TYPE.SIDE_BAR;
 
+@Listeners(AllureAttachmentListener.class)
+@Features({"Selenide Test Suite"})
+@Stories({"Login tests"})
 public class JDISiteDifferentElementsPageTest extends SelenideBase {
 
     @Test
