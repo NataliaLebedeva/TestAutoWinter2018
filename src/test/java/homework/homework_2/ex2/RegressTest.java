@@ -18,13 +18,13 @@ public class RegressTest extends TestBase {
 
     private WebDriverWait wait;
 
-    @BeforeClass(alwaysRun = true)
+    @BeforeClass()
     public void beforeClass() {
         GetDriver().get("https://jdi-framework.github.io/tests/index.htm");
         wait = new WebDriverWait(GetDriver(), 10);
     }
 
-    @AfterClass(alwaysRun = true)
+    @AfterClass()
     public void afterClass() {
         //10. Close Browser
         GetDriver().close();
