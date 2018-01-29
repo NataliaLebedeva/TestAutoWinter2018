@@ -26,4 +26,8 @@ public class DriverFactory {
             instance = DRIVERS.get("chrome").get();
         return instance;
     }
+
+    public static WebDriver generateNewDriver(String type) {
+            return DRIVERS.get(type).get();
+    }
 }

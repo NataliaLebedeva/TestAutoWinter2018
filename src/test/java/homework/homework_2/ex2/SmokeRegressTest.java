@@ -1,21 +1,19 @@
 package homework.homework_2.ex2;
 
-import homework.TestBase;
+import homework.DriverFactory;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import java.util.List;
 
-import static homework.DriverFactory.GetDriver;
-
-public class SmokeRegressTest extends TestBase {
+public class SmokeRegressTest extends SmokeAndRegressionPresets {
 
     private static final String USERNAME = "Piter Chailovskii";
     private static final String MAIN_TITLE = "EPAM FRAMEWORK WISHES\u2026";
@@ -24,7 +22,6 @@ public class SmokeRegressTest extends TestBase {
             "ALIQUA. UT ENIM AD MINIM VENIAM, QUIS NOSTRUD EXERCITATION ULLAMCO LABORIS NISI UT ALIQUIP " +
             "EX EA COMMODO CONSEQUAT DUIS AUTE IRURE DOLOR IN REPREHENDERIT IN VOLUPTATE VELIT ESSE " +
             "CILLUM DOLORE EU FUGIAT NULLA PARIATUR.";
-    private WebDriverWait wait;
 
     @DataProvider
     public Object[][] data() {
@@ -42,58 +39,53 @@ public class SmokeRegressTest extends TestBase {
         };
     }
 
-    @BeforeClass(alwaysRun = true)
-    public void beforeClass() {
-        GetDriver().get("https://jdi-framework.github.io/tests/index.htm");
-        wait = new WebDriverWait(GetDriver(), 10);
+    @BeforeMethod(alwaysRun = true)
+    public void beforeMethod() {
+        driver = DriverFactory.generateNewDriver("chrome");
+        wait = new WebDriverWait(driver, 10);
     }
 
-    @AfterClass(alwaysRun = true)
-    public void afterClass() {
-        //10. Close Browser
-//        GetDriver().close();
+    @AfterMethod(alwaysRun = true)
+    public void afterMethod() {
+        driver.close();
     }
 
     @Test(dataProvider = "data", groups = "regression")
     public void firstTest(String title, String content) {
         String commonLocator = "//span[contains(@class,'%s')]/../../span";
+        driver.get("https://jdi-framework.github.io/tests/index.htm");
         wait.until(ExpectedConditions.textToBe(By.xpath(String.format(commonLocator, title)), content));
     }
 
     @Test(groups = "regression")
     public void secondTest() {
-        GetDriver().findElement(By.cssSelector(".uui-profile-menu")).click();
-        GetDriver().findElement(By.id("Login")).sendKeys("epam");
-        GetDriver().findElement(By.id("Password")).sendKeys("1234");
-        GetDriver().findElement(By.cssSelector(".uui-button")).click();
-        WebElement profileInfo = GetDriver().findElement(By.cssSelector(".profile-photo span"));
+        driver.get("https://jdi-framework.github.io/tests/index.htm");
+        driver.findElement(By.cssSelector(".uui-profile-menu")).click();
+        driver.findElement(By.id("Login")).sendKeys("epam");
+        driver.findElement(By.id("Password")).sendKeys("1234");
+        driver.findElement(By.cssSelector(".uui-button")).click();
+        WebElement profileInfo = driver.findElement(By.cssSelector(".profile-photo span"));
         Assert.assertTrue(USERNAME.equalsIgnoreCase(profileInfo.getText()));
-        GetDriver().findElement(By.className("fa-sign-out")).click();
+        driver.findElement(By.className("fa-sign-out")).click();
     }
 
     @Test(groups = "smoke")
     public void thirdTest() {
-        List<WebElement> images = GetDriver().findElements(By.cssSelector(".benefit-icon span"));
+        driver.get("https://jdi-framework.github.io/tests/index.htm");
+        List<WebElement> images = driver.findElements(By.cssSelector(".benefit-icon span"));
         Assert.assertEquals(images.size(), 4);
         for (WebElement img : images) {
             Assert.assertTrue(img.isDisplayed());
         }
-
-        WebElement actualMainTitle = GetDriver().findElement(By.cssSelector(".main-txt"));
-        Assert.assertEquals(MAIN_TEXT, actualMainTitle.getText());
-        WebElement actualMainTxt = GetDriver().findElement(By.cssSelector(".main-title"));
-        Assert.assertEquals(MAIN_TITLE, actualMainTxt.getText());
     }
 
     @Test(groups = "smoke")
     public void fourthTest() {
-
-        GetDriver().findElement(By.cssSelector(".uui-profile-menu")).click();
-        GetDriver().findElement(By.id("Login")).sendKeys("epam");
-        GetDriver().findElement(By.id("Password")).sendKeys("0000");
-        GetDriver().findElement(By.cssSelector(".uui-button")).click();
-        WebElement profileInfo = GetDriver().findElement(By.cssSelector(".login-txt"));
-        Assert.assertEquals(profileInfo.getText(), "* Login Faild");
+        driver.get("https://jdi-framework.github.io/tests/index.htm");
+        WebElement actualMainTitle = driver.findElement(By.cssSelector(".main-txt"));
+        Assert.assertEquals(MAIN_TEXT, actualMainTitle.getText());
+        WebElement actualMainTxt = driver.findElement(By.cssSelector(".main-title"));
+        Assert.assertEquals(MAIN_TITLE, actualMainTxt.getText());
     }
 
 }
