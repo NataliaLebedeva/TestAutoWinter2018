@@ -5,6 +5,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 
 import java.util.ArrayList;
@@ -24,7 +25,7 @@ public class SeleniumLoginTest extends TestBase {
             "EX EA COMMODO CONSEQUAT DUIS AUTE IRURE DOLOR IN REPREHENDERIT IN VOLUPTATE VELIT ESSE " +
             "CILLUM DOLORE EU FUGIAT NULLA PARIATUR.";
 
-    private final List<String> texts = new ArrayList<String>(){{
+    private final List<String> texts = new ArrayList<String>() {{
         add("To include good practices and ideas from successful EPAM projec");
         add("To be flexible and customizable");
         add("To be multiplatform");
@@ -50,7 +51,7 @@ public class SeleniumLoginTest extends TestBase {
 
         //5. Assert User name in the left-top side of screen that user is loggined
         WebElement profileInfo = GetDriver().findElement(By.cssSelector(".profile-photo span"));
-        assertTrue(USERNAME.equalsIgnoreCase(profileInfo.getText()));
+        assertTrue(USERNAME.equalsIgnoreCase(profileInfo.getText()), String.format("Expected: %s but Actual: %s", USERNAME, profileInfo.getText()));
 
         //6. Assert Browser title
         wait.until(ExpectedConditions.titleIs(TITLE));
@@ -70,7 +71,10 @@ public class SeleniumLoginTest extends TestBase {
         //9. Assert that there are the main header and the text below it on the Home Page
         assertEquals(MAIN_TEXT, GetDriver().findElement(By.cssSelector(".main-txt")).getText());
         assertEquals(MAIN_TITLE, GetDriver().findElement(By.cssSelector(".main-title")).getText());
+    }
 
+    @AfterMethod
+    public void afterMethod() {
         GetDriver().close();
     }
 }
