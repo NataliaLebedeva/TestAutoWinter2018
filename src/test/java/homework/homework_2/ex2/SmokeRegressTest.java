@@ -15,9 +15,9 @@ import java.util.List;
 
 public class SmokeRegressTest extends SmokeAndRegressionPresets {
 
-    private static final String USERNAME = "Piter Chailovskii";
-    private static final String MAIN_TITLE = "EPAM FRAMEWORK WISHES\u2026";
-    private static final String MAIN_TEXT = "LOREM IPSUM DOLOR SIT AMET, " +
+    private final String USERNAME = "Piter Chailovskii";
+    private final String MAIN_TITLE = "EPAM FRAMEWORK WISHES\u2026";
+    private final String MAIN_TEXT = "LOREM IPSUM DOLOR SIT AMET, " +
             "CONSECTETUR ADIPISICING ELIT, SED DO EIUSMOD TEMPOR INCIDIDUNT UT LABORE ET DOLORE MAGNA " +
             "ALIQUA. UT ENIM AD MINIM VENIAM, QUIS NOSTRUD EXERCITATION ULLAMCO LABORIS NISI UT ALIQUIP " +
             "EX EA COMMODO CONSEQUAT DUIS AUTE IRURE DOLOR IN REPREHENDERIT IN VOLUPTATE VELIT ESSE " +

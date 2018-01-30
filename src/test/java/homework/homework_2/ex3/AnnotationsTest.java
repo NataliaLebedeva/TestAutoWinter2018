@@ -7,7 +7,7 @@ import org.testng.annotations.*;
 
 import static java.lang.System.setProperty;
 
-public class annotationsTest {
+public class AnnotationsTest {
     private WebDriver driver;
 
     @BeforeSuite

@@ -1,9 +1,7 @@
 package homework.homework_3.pageObjects;
 
-import homework.TestBase;
 import homework.homework_3.entities.User;
 import homework.homework_3.enums.Benefits;
-import homework.homework_3.enums.MainTextEnum;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -12,9 +10,10 @@ import org.testng.Assert;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static homework.DriverFactory.*;
-import static homework.TestBase.*;
-import static homework.homework_3.enums.MainTextEnum.*;
+import static homework.DriverFactory.GetDriver;
+import static homework.TestBase.REPLACE_NEW_LINE;
+import static homework.homework_3.enums.MainTextEnum.MAIN_TEXT;
+import static homework.homework_3.enums.MainTextEnum.MAIN_TITLE;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 

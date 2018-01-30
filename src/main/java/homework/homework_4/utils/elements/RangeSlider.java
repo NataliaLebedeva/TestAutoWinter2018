@@ -59,16 +59,6 @@ public class RangeSlider {
         JDITestSiteLogger.Add(RANGE_ACTIONS.RANGE_LEFT, MIN);
         setToEdge(right, -300);
         JDITestSiteLogger.Add(RANGE_ACTIONS.RANGE_RIGHT, MIN);
-//        new Actions(WebDriverRunner.getWebDriver())
-//                .clickAndHold(left)
-//                .pause(500)
-//                .moveByOffset(-300, 0)
-//                .release()
-//                .clickAndHold(right)
-//                .pause(500)
-//                .moveByOffset(-300, 0)
-//                .release()
-//                .perform();
     }
 
     private void setMaxPosition() {
@@ -76,16 +66,6 @@ public class RangeSlider {
         JDITestSiteLogger.Add(RANGE_ACTIONS.RANGE_RIGHT, MAX);
         setToEdge(left, 300);
         JDITestSiteLogger.Add(RANGE_ACTIONS.RANGE_LEFT, MAX);
-//        new Actions(WebDriverRunner.getWebDriver())
-//                .clickAndHold(right)
-//                .pause(500)
-//                .moveByOffset(300, 0)
-//                .release()
-//                .clickAndHold(left)
-//                .pause(500)
-//                .moveByOffset(300, 0)
-//                .release()
-//                .perform();
     }
 
     private void setRangeCommon(int left, int right) {

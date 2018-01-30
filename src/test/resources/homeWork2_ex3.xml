@@ -3,7 +3,7 @@
 <suite name="Suite2" verbose="1" data-provider-thread-count="2">
     <test name="homeWork2_ex3" >
         <classes>
-            <class name="homework.homework_2.ex3.annotationsTest"/>
+            <class name="homework.homework_2.ex3.AnnotationsTest"/>
         </classes>
     </test>
 </suite>

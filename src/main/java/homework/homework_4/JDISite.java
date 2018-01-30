@@ -2,6 +2,7 @@ package homework.homework_4;
 
 import homework.homework_4.pageObjects.*;
 
+import static com.codeborne.selenide.Selenide.open;
 import static com.codeborne.selenide.Selenide.page;
 
 public class JDISite {
@@ -17,5 +18,9 @@ public class JDISite {
         commonPage = page(CommonPage.class);
         difElementPage = page(DifferentElementsPage.class);
         datesPage = page(DatesPage.class);
+    }
+
+    public static void openSite() {
+        open("https://jdi-framework.github.io/tests/index.htm");
     }
 }

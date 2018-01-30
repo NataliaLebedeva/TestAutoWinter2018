@@ -7,9 +7,7 @@ import ru.yandex.qatools.allure.annotations.Features;
 import ru.yandex.qatools.allure.annotations.Stories;
 
 import static com.codeborne.selenide.Selenide.open;
-import static homework.homework_4.JDISite.commonPage;
-import static homework.homework_4.JDISite.datesPage;
-import static homework.homework_4.JDISite.loginForm;
+import static homework.homework_4.JDISite.*;
 import static homework.homework_4.entities.User.PITER_CHAILOVSKII;
 import static homework.homework_4.pageObjects.CommonPage.JDI_SITE_PAGES.DATES;
 import static homework.homework_4.pageObjects.CommonPage.MENU_TYPE.HEADER;

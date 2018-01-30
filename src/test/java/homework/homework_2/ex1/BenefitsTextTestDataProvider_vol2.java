@@ -15,8 +15,6 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 
-import static org.testng.Assert.assertEquals;
-
 public class BenefitsTextTestDataProvider_vol2 {
     private WebDriver driver;
 

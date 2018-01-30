@@ -12,7 +12,7 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 public class RegressTest extends SmokeRegressTest {
-    private static final String USERNAME = "Piter Chailovskii";
+    private final String USERNAME = "Piter Chailovskii";
 
     @DataProvider
     public Object[][] data() {
