@@ -15,8 +15,10 @@ public class JDISiteMetalsColorsTest extends TestInit {
         JDISite.loginForm.checkUserInfo(User.PITER_CHAILOVSKII);
 
         // 2. Open Metals & Colors page by Header menu
-        JDISite.header.menu.selectItem(JDI_PAGES.COMPLEX_TABLE);
+        JDISite.header.menu.selectItem(JDI_PAGES.METALS_COLORS);
 
         // 3. Fill form Metals & Colors by data
+
+
     }
 }
