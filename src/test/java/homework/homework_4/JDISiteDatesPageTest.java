@@ -6,7 +6,6 @@ import org.testng.annotations.Test;
 import ru.yandex.qatools.allure.annotations.Features;
 import ru.yandex.qatools.allure.annotations.Stories;
 
-import static com.codeborne.selenide.Selenide.open;
 import static homework.homework_4.JDISite.*;
 import static homework.homework_4.entities.User.PITER_CHAILOVSKII;
 import static homework.homework_4.pageObjects.CommonPage.JDI_SITE_PAGES.DATES;
@@ -20,7 +19,7 @@ public class JDISiteDatesPageTest extends SelenideBase {
     @Test
     public void dragAndDropTest() {
         // 4. Open site by URL
-        open("https://jdi-framework.github.io/tests/index.htm");
+        JDISite.openSite();
 
         // 5. perform login before every method
         loginForm.login(PITER_CHAILOVSKII);

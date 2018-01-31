@@ -15,9 +15,6 @@ public class JDISite extends WebSite {
     public static Header header;
     public static SideMenu sideMenu;
 
-//    @FindBy(xpath = "//*[contains(@class, 'uui-navigation')][1]")
-//    public static Menu<JDI_SITE_PAGES> headerMenu;
-
     public static void login(User user) {
         loginForm.loginAsUser(user);
     }

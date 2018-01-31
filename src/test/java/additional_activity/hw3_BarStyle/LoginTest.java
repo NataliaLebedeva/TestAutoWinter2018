@@ -29,7 +29,7 @@
 //        wait.until(ExpectedConditions.titleIs(innerDataProvider.TITLE));
 //
 //        //4. Perform login
-//        driver.findElement(By.cssSelector(".uui-profile-menu")).click();
+//        driver.findElement(By.cssSelector(".uui-profile-headerMenu")).click();
 //        driver.findElement(By.id("Login")).sendKeys(innerDataProvider.USERLOGIN);
 //        driver.findElement(By.id("Password")).sendKeys(innerDataProvider.USERPASS);
 //        driver.findElement(By.cssSelector(".uui-button")).click();
