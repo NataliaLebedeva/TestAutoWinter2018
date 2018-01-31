@@ -1,4 +1,4 @@
-package homework.homework_7_JDI.site.sections;
+package homework.homework_7_JDI.utils;
 
 
 import com.epam.jdi.uitests.web.selenium.elements.complex.Menu;

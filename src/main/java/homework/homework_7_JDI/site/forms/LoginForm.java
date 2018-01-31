@@ -1,4 +1,4 @@
-package homework.homework_7_JDI.site.sections;
+package homework.homework_7_JDI.site.forms;
 
 import com.epam.jdi.uitests.web.selenium.elements.common.Button;
 import com.epam.jdi.uitests.web.selenium.elements.common.Label;

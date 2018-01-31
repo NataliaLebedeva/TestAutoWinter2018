@@ -3,14 +3,13 @@ package homework.homework_7_JDI.site.pages;
 import com.epam.jdi.uitests.web.selenium.elements.common.Button;
 import com.epam.jdi.uitests.web.selenium.elements.common.TextArea;
 import com.epam.jdi.uitests.web.selenium.elements.complex.RadioButtons;
-import com.epam.jdi.uitests.web.selenium.elements.composite.WebPage;
 import com.epam.jdi.uitests.web.selenium.elements.pageobjects.annotations.JPage;
 import org.openqa.selenium.support.FindBy;
 
 import java.awt.*;
 
 @JPage(url = "/contacts.html", title = "Contact Form")
-public class ContactFormPage extends WebPage {
+public class ContactFormPage extends CommonPage {
 
     @FindBy(css = "[id ='Name']")
     private TextField name;
