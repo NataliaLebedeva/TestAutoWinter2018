@@ -21,7 +21,7 @@ public class JDISiteMetalsColorsTest extends TestInit {
     public void metalsColorsTest() {
 
         // 2. Open Metals & Colors page by Header menu
-        JDISite.commonPage.header.menu.selectItem(JDI_PAGES.METALS_COLORS);
+        JDISite.homePage.header.menu.selectItem(JDI_PAGES.METALS_COLORS);
 
         // 3. Fill form Metals & Colors by data
         JDISite.metalsColorsPage.metalsColorsForm.submit(MetalsColorsFormData.DEFAULT);

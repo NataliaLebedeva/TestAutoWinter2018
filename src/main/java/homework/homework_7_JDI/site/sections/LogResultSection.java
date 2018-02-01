@@ -10,5 +10,5 @@ public class LogResultSection extends Section {
     private TextArea logs;
 
     @FindBy(xpath = "//ul[contains(@class, 'results')]")
-    private TextArea results;
+    public TextArea results;
 }

@@ -1,9 +1,7 @@
 package homework.homework_7_JDI.site.pages;
 
-import com.epam.jdi.uitests.web.selenium.elements.composite.WebPage;
-import com.epam.jdi.uitests.web.selenium.elements.pageobjects.annotations.JPage;
+import homework.homework_7_JDI.site.pages.base.CommonPage;
 
-@JPage(url = "/index.html", title = "Home Page")
-public class HomePage extends WebPage{
+public class HomePage extends CommonPage {
 
 }

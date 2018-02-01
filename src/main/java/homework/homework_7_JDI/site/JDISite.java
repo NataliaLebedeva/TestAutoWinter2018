@@ -1,25 +1,27 @@
 package homework.homework_7_JDI.site;
 
 import com.epam.jdi.uitests.web.selenium.elements.composite.WebSite;
+import com.epam.jdi.uitests.web.selenium.elements.pageobjects.annotations.JPage;
 import com.epam.jdi.uitests.web.selenium.elements.pageobjects.annotations.JSite;
 import homework.homework_7_JDI.entities.User;
-import homework.homework_7_JDI.site.pages.CommonPage;
 import homework.homework_7_JDI.site.pages.HomePage;
 import homework.homework_7_JDI.site.pages.MetalsColorsPage;
 
 @JSite("https://epam.github.io/JDI/")
 public class JDISite extends WebSite {
 
-    public static CommonPage commonPage;
+    @JPage(url = "/index.html", title = "Home Page")
     public static HomePage homePage;
+
+    @JPage(url = "/metals-colors.html", title = "Metal and Colors")
     public static MetalsColorsPage metalsColorsPage;
 
     public static void login(User user) {
-        commonPage.header.loginForm.loginAsUser(user);
+        homePage.header.loginForm.loginAsUser(user);
     }
 
     public static void checkUserInfo(User user) {
-        commonPage.header.loginForm.checkUserInfo(user);
+        homePage.header.loginForm.checkUserInfo(user);
     }
 
 }
