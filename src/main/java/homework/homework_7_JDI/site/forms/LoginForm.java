@@ -11,14 +11,11 @@ import org.testng.Assert;
 
 public class LoginForm extends Form<User> {
 
-    @FindBy(id ="Login")
+    @FindBy(id = "Login")
     private TextField login;
 
-    @FindBy(id ="Password")
+    @FindBy(id = "Password")
     private TextField password;
-
-    @FindBy(css = ".uui-button")
-    private Button submitButton;
 
     @FindBy(css = ".profile-photo")
     private Label profilePhoto;
@@ -26,12 +23,24 @@ public class LoginForm extends Form<User> {
     @FindBy(css = ".profile-photo span")
     private Text profileInfo;
 
-    public void loginAsUser(User user){
+    @FindBy(css = ".fa-sign-out")
+    private Label signOut;
+
+    @FindBy(css = ".uui-button")
+    private Button submitButton;
+
+    public void loginAsUser(User user) {
         profilePhoto.click();
         this.loginAs(user);
     }
 
     public void checkUserInfo(User user) {
         Assert.assertTrue(profileInfo.getText().equalsIgnoreCase(user.getUserName()));
+    }
+
+    public void logout() {
+        if (!signOut.isDisplayed())
+            profilePhoto.click();
+        signOut.click();
     }
 }

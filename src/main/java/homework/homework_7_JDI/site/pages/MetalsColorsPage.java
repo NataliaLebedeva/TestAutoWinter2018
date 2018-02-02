@@ -9,6 +9,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class MetalsColorsPage extends LoggedPage {
+
     public MetalsColorsForm metalsColorsForm;
 
     public void checkResult(MetalsColorsFormData mc) {

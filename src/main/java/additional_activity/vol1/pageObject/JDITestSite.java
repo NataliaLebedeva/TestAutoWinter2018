@@ -5,7 +5,7 @@ import additional_activity.vol1.pageObject.pages.HomePage;
 
 public class JDITestSite {
 
-//    public static ContactFormPage contactFormPage;
+//    public static ContactPage contactFormPage;
     public static HomePage homePage;
 
     private static WebDriver driver;

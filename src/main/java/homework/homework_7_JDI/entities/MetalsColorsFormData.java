@@ -24,7 +24,7 @@ public class MetalsColorsFormData {
     private List<Integer> summary;
     private List<String> elements;
     private String color;
-    private String metal;
+    private String metals;
     private List<String> vegetables;
 
     public List<String> toLog() {
@@ -32,7 +32,7 @@ public class MetalsColorsFormData {
             add(String.format("Summary: %s", summary.stream().mapToInt(Integer::new).sum()));
             add(String.format("Elements: %s", elements.stream().collect(Collectors.joining(", "))));
             add(String.format("Color: %s", color));
-            add(String.format("Metal: %s", metal));
+            add(String.format("Metal: %s", metals));
             add(String.format("Vegetables: %s", vegetables.stream().collect(Collectors.joining(", "))));
         }};
     }

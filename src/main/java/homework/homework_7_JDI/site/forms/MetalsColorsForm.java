@@ -9,7 +9,7 @@ import com.epam.jdi.uitests.web.selenium.elements.composite.Form;
 import com.epam.jdi.uitests.web.selenium.elements.pageobjects.annotations.JFindBy;
 import com.epam.jdi.uitests.web.selenium.elements.pageobjects.annotations.objects.JDropdown;
 import homework.homework_7_JDI.entities.MetalsColorsFormData;
-import homework.homework_7_JDI.utils.JDIDropdown;
+import homework.homework_7_JDI.site.elements.JDIDropdown;
 import org.openqa.selenium.support.FindBy;
 
 public class MetalsColorsForm extends Form<MetalsColorsFormData> {
@@ -48,7 +48,7 @@ public class MetalsColorsForm extends Form<MetalsColorsFormData> {
         summary2.select(mc.getSummary().get(1).toString());
         mc.getElements().forEach(elements::select);
         color.select(mc.getColor());
-        metals.newInput(mc.getMetal());
+        metals.newInput(mc.getMetals());
         vegetables.select(mc.getVegetables());
 
         submit.click();
