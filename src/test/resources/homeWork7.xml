@@ -1,0 +1,9 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="Suite7" verbose="1">
+    <test name="homeWork4">
+        <classes>
+            <class name="homework.homework_7_JDI.JDISiteMetalsColorsTest"/>
+        </classes>
+    </test>
+</suite>
