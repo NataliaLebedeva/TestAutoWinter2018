@@ -1,12 +1,11 @@
-package homework.homework_8_IDI;
+package homework.homework_8_JDI;
 
-import com.epam.jdi.uitests.web.selenium.elements.base.J;
 import homework.homework_7_JDI.TestInit;
 import homework.homework_7_JDI.entities.MetalsColorsFormData;
 import homework.homework_7_JDI.entities.User;
 import homework.homework_7_JDI.enums.JDI_PAGES;
 import homework.homework_7_JDI.site.JDISite;
-import homework.homework_8_IDI.utils.ResourceLoader;
+import homework.homework_8_JDI.utils.ResourceLoader;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
@@ -32,9 +31,9 @@ public class MetalsColorsDataProviderTest extends TestInit{
         JDISite.homePage.refresh();
     }
 
-    @DataProvider(name = "MetalsColorsData")
-    public Object[][] getData() throws FileNotFoundException {
-        Map<String, MetalsColorsFormData> map = ResourceLoader.loadResource();
+    @DataProvider
+    public Object[][] getDataFromLoader() throws FileNotFoundException {
+        Map<String, MetalsColorsFormData> map = ResourceLoader.getData();
 
         Object[] keys = map.keySet().toArray();
         Object[] values = map.values().toArray();
@@ -46,8 +45,8 @@ public class MetalsColorsDataProviderTest extends TestInit{
         return result;
     }
 
-    @Test(dataProvider = "MetalsColorsData")
-    public void test1(MetalsColorsFormData data) throws IOException {
+    @Test(dataProvider = "getDataFromLoader")
+    public void test1(String key, MetalsColorsFormData data) throws IOException {
 
         // 2. Open Metals & Colors page by Header menu
         JDISite.homePage.header.menu.selectItem(JDI_PAGES.METALS_COLORS);
@@ -57,12 +56,5 @@ public class MetalsColorsDataProviderTest extends TestInit{
 
         // 4. Check Result section
         JDISite.metalsColorsPage.checkResult(data);
-
-        // 1 create utils
-        // 1.1 dataProviderData should be a "singletone"
-        // 1.2 return doubleArray
-        // 2 copy hw_7 and modify it for data provider approach
-        // 3 enjoy
-
     }
 }

@@ -137,9 +137,9 @@
                 </executions>
             </plugin>
             <!--<plugin>-->
-                <!--<groupId>org.apache.maven.plugins</groupId>-->
-                <!--<artifactId>maven-site-plugin</artifactId>-->
-                <!--<version>3.3</version>-->
+            <!--<groupId>org.apache.maven.plugins</groupId>-->
+            <!--<artifactId>maven-site-plugin</artifactId>-->
+            <!--<version>3.3</version>-->
             <!--</plugin>-->
         </plugins>
     </build>
@@ -148,9 +148,9 @@
         <excludeDefaults>true</excludeDefaults>
         <plugins>
             <!--<plugin>-->
-                <!--<groupId>org.apache.maven.plugins</groupId>-->
-                <!--<artifactId>maven-surefire-report-plugin</artifactId>-->
-                <!--<version>2.17</version>-->
+            <!--<groupId>org.apache.maven.plugins</groupId>-->
+            <!--<artifactId>maven-surefire-report-plugin</artifactId>-->
+            <!--<version>2.17</version>-->
             <!--</plugin>-->
 
             <plugin>
@@ -202,6 +202,18 @@
             <id>hw4</id>
             <properties>
                 <runner>homeWork4.xml</runner>
+            </properties>
+        </profile>
+        <profile>
+            <id>hw7</id>
+            <properties>
+                <runner>homeWork7.xml</runner>
+            </properties>
+        </profile>
+        <profile>
+            <id>hw8</id>
+            <properties>
+                <runner>homeWork8.xml</runner>
             </properties>
         </profile>
     </profiles>
